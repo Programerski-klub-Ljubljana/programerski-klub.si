@@ -1,0 +1,1 @@
+Vpis trenerja
