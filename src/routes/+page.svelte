@@ -20,9 +20,6 @@
         <Card body><a href="/vpis/trener">Postani trener</a></Card>
     </Col>
     <Col>
-        <Card body><a href="/vpis/uprava">Postani član uprave</a></Card>
-    </Col>
-    <Col>
         <Card body><a href="/izpis">Izpiši se</a></Card>
     </Col>
 </Row>
