@@ -41,6 +41,7 @@
     </Col>
 </Row>
 <Row>
+<!--
     <Col>
         <Card body><a href="/igre">Igre</a></Card>
     </Col>
@@ -50,6 +51,7 @@
     <Col>
         <Card body><a href="/github">Github</a></Card>
     </Col>
+-->
     <Col>
         <Card body><a href="/dokumenti">Dokumenti</a></Card>
     </Col>

@@ -33,8 +33,6 @@
             </ListGroup>
         </Col>
     </Row>
-</Container>
-
     <hr>
 
     <p>
@@ -106,3 +104,4 @@
         ustanovil "Programerski klub Ljubljana".
 
     </p>
+</Container>
