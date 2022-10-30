@@ -2,18 +2,12 @@
     import {Button, Col, Form, FormGroup, Input, Row} from "sveltestrap";
 </script>
 
+<p>
+    Hvala ker ste se odločili vspostaviti kontakt z nami. Na vsak email odgovorimo kar se da hitro.
+    V primeru dela lahko pričakujete odgovor najkasneje do večera istega dne na katerega ste poslali sporočilo...
+</p>
 <Form>
     <Row>
-        <div>
-            <p>Hej! Škoda ker nas zapuščaš... Dan ne bo enak brez tebe :(</p>
-            <p>Ful bi bilo cool če bi nam povedal
-                zakaj zapuščaš klub da bi se lahko popravili in izboljšali!</p>
-
-                <p>
-                    Vsak komentar pogledamo na upravnem zboru kluba zato ne pišeš za brez veze. :)
-                    Bodi fino in se še kaj vidimo!
-                </p>
-        </div>
         <Col>
             <Row>
                 <Col>
@@ -30,7 +24,14 @@
             <Row>
                 <Col>
                     <FormGroup>
-                        <Input type="textarea" rows=9 placeholder="Razlog odhoda iz kluba..."/>
+                        <Input placeholder="Vnesi email..."/>
+                    </FormGroup>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <FormGroup>
+                        <Input type="textarea" rows=9 placeholder="Sporočilo..."/>
                     </FormGroup>
                 </Col>
             </Row>

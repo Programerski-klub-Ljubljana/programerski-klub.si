@@ -13,43 +13,47 @@
     vodi v pravo smer in da je kvaliteta posredovanega znanja na najvišjem nivoju.
 </p>
 
-<Container>
-    <Row>
-        <Col sm=4>
-            <a href="/clani/urosjarc">
-                <Figure caption="Uroš Jarc">
-                    <Image fluid alt="Landscape" src="/clani/urosjarc.png"></Image>
-                </Figure>
-            </a>
-        </Col>
-    </Row>
-</Container>
+<!--<Container>-->
+<!--    <Row>-->
+<!--        <Col sm=4>-->
+<!--            <a href="/clani/urosjarc">-->
+<!--                <Figure caption="Uroš Jarc">-->
+<!--                    <Image fluid alt="Landscape" src="/clani/urosjarc.png"></Image>-->
+<!--                </Figure>-->
+<!--            </a>-->
+<!--        </Col>-->
+<!--    </Row>-->
+<!--</Container>-->
 
 <p>
     V upravnem odboru pa so vsi člani ki upravljajo z klubom in se ukvarjajo z dejanskim delovanjem in izvajanjem
-    klubskih aktivnosti. V upravnem odboru so vsi trenerji kluba.
+    klubskih aktivnosti. V upravnem odboru so včlanjeni vsi trenerji kluba ter soustanovitelji.
 </p>
 
+<hr>
 <Container>
     <Row>
         <Col sm=4>
             <a href="/clani/urosjarc">
-                <Figure caption="Uroš Jarc">
+                <Figure caption="predsednik, ustanovitelj">
                     <Image fluid alt="Landscape" src="/clani/urosjarc.png"></Image>
+                    Uroš Jarc
                 </Figure>
             </a>
         </Col>
         <Col sm=4>
             <a href="/clani/danijelkorbar">
-                <Figure caption="Danijel Korbar">
+                <Figure caption="podpredsednik, soustanovitelj">
                     <Image fluid alt="Landscape" src="/clani/danijelkorbar.png"></Image>
+                    Danijel Korbar
                 </Figure>
             </a>
         </Col>
         <Col sm=4>
             <a href="/clani/danilojezernik">
-                <Figure caption="Uroš Jarc">
+                <Figure caption="podpredsednik, soustanovitelj">
                     <Image fluid alt="Landscape" src="/clani/danilojezernik.png"></Image>
+                    Danilo Jezernik
                 </Figure>
             </a>
         </Col>

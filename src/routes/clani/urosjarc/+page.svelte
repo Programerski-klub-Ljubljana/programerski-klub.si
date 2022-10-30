@@ -11,11 +11,11 @@
         </Col>
         <Col md=6>
             <h1>Uroš Jarc</h1>
-            <p>Ustanovitelj kluba in trenutno aktivni predsednik kluba.</p>
+            <h5>Ustanovitelj kluba in predsednik kluba.</h5>
 
             <ListGroup id="list">
                 <ListGroupItem>
-                    <Icon name="calendar3"/>
+                    <Icon name="person"/>
                     24.5.1992
                 </ListGroupItem>
                 <ListGroupItem>
@@ -23,12 +23,12 @@
                     051-240-885
                 </ListGroupItem>
                 <ListGroupItem>
-                    <Icon name="envelope"/>
-                    jar.fmf@gmail.com
+                    <Icon name="globe"/>
+                    <a href="https://urosjarc.com">urosjarc.com</a>
                 </ListGroupItem>
                 <ListGroupItem>
                     <Icon name="github"/>
-                    urosjarc
+                    <a href="https://github.com/urosjarc">urosjarc</a>
                 </ListGroupItem>
             </ListGroup>
         </Col>

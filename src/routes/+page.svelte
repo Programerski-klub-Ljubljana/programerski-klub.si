@@ -48,12 +48,17 @@
     <Col>
         <Card body><a href="/vaje">Programerske vaje (vrazvoju)</a></Card>
     </Col>
+-->
     <Col>
         <Card body><a href="/github">Github</a></Card>
     </Col>
--->
     <Col>
         <Card body><a href="/dokumenti">Dokumenti</a></Card>
+    </Col>
+</Row>
+<Row>
+    <Col>
+        <Card body><a href="/kontakt">Kontakt</a></Card>
     </Col>
 </Row>
 
