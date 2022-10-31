@@ -35,9 +35,8 @@
   "dependencies": {
     "@threlte/core": "^4.3.2",
     "@threlte/extras": "^4.4.1",
-    "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
-    "sveltestrap": "^5.9.0",
+    "papercss": "^1.8.3",
     "three": "^0.145.0"
   }
 }

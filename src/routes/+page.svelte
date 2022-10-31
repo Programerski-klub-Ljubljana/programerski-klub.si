@@ -1,70 +1,56 @@
 <script>
-    import {Card, Col, Icon, Row} from "sveltestrap";
 </script>
 
-<Row>
-    <Col>
-        <Icon name="envelope"/>
-        <a href="info@programerski-klub.si">info@programerski-klub.si</a>
-    </Col>
-    <Col>
-        <Icon name="telephone"/>
-        <a href="051-240-885">051-240-885</a>
-    </Col>
-</Row>
-<Row>
-    <Col>
-        <Card body><a href="/vpis/clan">Postani član</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="/vpis/trener">Postani trener</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="/izpis">Izpiši se</a></Card>
-    </Col>
-</Row>
-<Row>
-    <Col>
-        <Card body><a href="oddelki/osnovnosolski">Osnovnošolski oddelek</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="oddelki/srednjesolski">Srednješolski oddelek</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="oddelki/clanski">Članski oddelek</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="oddelki/trenerski">Trenerski oddelek</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="oddelki/upravni">Upravni oddelek</a></Card>
-    </Col>
-</Row>
-<Row>
-<!--
-    <Col>
-        <Card body><a href="/igre">Igre</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="/vaje">Programerske vaje (vrazvoju)</a></Card>
-    </Col>
--->
-    <Col>
-        <Card body><a href="/github">Github</a></Card>
-    </Col>
-    <Col>
-        <Card body><a href="/dokumenti">Dokumenti</a></Card>
-    </Col>
-</Row>
-<Row>
-    <Col>
-        <Card body><a href="/kontakt">Kontakt</a></Card>
-    </Col>
-</Row>
+<div class="row flex-spaces">
+    <div class="col">
+        <a class="paper-btn btn-large btn-success" href="/vpis/clan">Postani član</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large btn-warning" href="/vpis/trener">Postani trener</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large btn-danger" href="/izpis">Izpiši se</a>
+    </div>
+</div>
+<div class="row flex-spaces">
+    <div class="col">
+        <a class="paper-btn btn-large " href="/oddelki/osnovnosolski">Osnovnošolci</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large " href="/oddelki/srednjesolski">Srednješolci</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large btn-secondary" href="/oddelki/clanski">Člani</a>
+    </div>
+</div>
+<div class="row flex-spaces">
+    <div class="col">
+        <a class="paper-btn btn-large btn-warning" href="/oddelki/trenerski">Trenerji</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large btn-primary" href="/oddelki/upravni">Uprava</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large btn-primary" href="/dokumenti">Dokumenti</a>
+    </div>
+</div>
+<div class="row flex-spaces">
+    <!--
+        <div>
+            <div>f="/vaje">Programerske vaje (vrazvoju)</a></>
+        </div>
+    -->
+    <div class="col">
+        <a class="paper-btn btn-large btn-secondary" href="/github">Github</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large" href="/igre">Igre</a>
+    </div>
+    <div class="col">
+        <a class="paper-btn btn-large btn-success" href="/kontakt">Kontakt</a>
+    </div>
+</div>
 
 <style>
-    * {
-        text-align: center;
-        padding: 20px;
-    }
+
 </style>

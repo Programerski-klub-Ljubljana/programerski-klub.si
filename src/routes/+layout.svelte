@@ -1,26 +1,37 @@
 <script>
-    import 'bootstrap/dist/css/bootstrap.css';
-    import 'bootstrap-icons/font/bootstrap-icons.css';
-    import {Button, Col, Container, Icon, Row} from "sveltestrap";
+    import 'papercss/dist/paper.min.css'
 </script>
 
+<div id="head" class="row">
+    <div class="col-2 col"></div>
+    <div class="col-8 col border shadow">
+        <h1 id="naslov">Programerski klub Ljubljana</h1>
+        <h2>Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo izkušeni trenerji.</h2>
+        <h3>Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih projektih, predvsem se pa zelo zabavamo. :)</h3>
+        <a class="paper-btn" href="/">Nazaj</a>
+    </div>
+    <div class="col-2 col"></div>
+</div>
 
-<Container lg>
-    <Row>
-        <Col xs={{size: 6, offset: 3}}>
-            <h1 id="naslov">Programerski klub Ljubljana</h1>
-            <h6>Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo izkušeni trenerji.</h6>
-            <p><b>Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih projektih, predvsem se pa zelo zabavamo. :)</b></p>
-
-            <Button style="border-radius: 1000px" href="/"><Icon name="house"></Icon> Domov</Button>
-            <hr>
-            <slot></slot>
-        </Col>
-    </Row>
-</Container>
+<div class="row">
+    <div class="col-2 col"></div>
+    <div class="col-8 col border shadow">
+        <slot></slot>
+    </div>
+    <div class="col-2 col"></div>
+</div>
 
 <style>
-    * {
+    #head{
+        margin-top: 20px;
+    }
+    h1, h2, h3 {
         text-align: center;
     }
+   h2 {
+       font-size: 40px;
+   }
+   h3 {
+       font-size: 30px;
+   }
 </style>
