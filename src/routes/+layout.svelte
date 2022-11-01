@@ -8,14 +8,14 @@
         <h1 id="naslov">Programerski klub Ljubljana</h1>
         <h2>Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo izkušeni trenerji.</h2>
         <h3>Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih projektih, predvsem se pa zelo zabavamo. :)</h3>
-        <a class="paper-btn" href="/">Nazaj</a>
+        <a class="paper-btn" href="/#content">Nazaj</a>
     </div>
     <div class="xs-0 sm-2 col"></div>
 </div>
 
 <div class="row">
     <div class="xs-0 sm-2 col"></div>
-    <div class="xs-12 sm-8  col border shadow">
+    <div id="content" class="xs-12 sm-8  col border shadow">
         <slot></slot>
     </div>
     <div class="xs-0 sm-2 col-2 col"></div>
