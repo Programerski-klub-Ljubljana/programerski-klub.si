@@ -1,6 +1,4 @@
 <script>
-    import {Progress, Spinner} from "sveltestrap";
-
     let loading = true;
 
     function frameLoaded(ev) {
@@ -20,15 +18,25 @@
 </p>
 <br>
 
+<div class="row flex-spaces">
 {#if loading}
-    <div class="d-flex justify-content-center">
-        <Spinner flex size='xl'/>
+    <div class="col-2">
+        <img class="no-border" src="https://thumbs.gfycat.com/AjarDisguisedAfricanparadiseflycatcher-max-1mb.gif"/>
+        <div style="height: 5000px"></div>
     </div>
-    <div style="height: 5000px"></div>
 {/if}
 
-<div class="ratio ratio-1x1">
-    <iframe on:load="{frameLoaded}" class="embed-responsive-item" allowfullscreen
-            src="https://drive.google.com/embeddedfolderview?id=1oKZzrawX_JM1Vj7efFtSWUQsQ6Tfo-Er#list">
-    </iframe>
+    <div class="col-12">
+        <iframe on:load="{frameLoaded}" class="embed-responsive-item" allowfullscreen
+                src="https://drive.google.com/embeddedfolderview?id=1oKZzrawX_JM1Vj7efFtSWUQsQ6Tfo-Er#list">
+        </iframe>
+    </div>
 </div>
+
+<style>
+    iframe {
+        width: 100%;
+        height: 380px;
+        border: none;
+    }
+</style>

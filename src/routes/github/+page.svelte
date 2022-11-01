@@ -1,5 +1,4 @@
 <script>
-    import {Col, Container, Icon, Image, ListGroup, ListGroupItem, Row} from "sveltestrap";
     export let data;
 </script>
 
@@ -16,27 +15,50 @@
     profil kluba, kjer lahko kolaborira v github skupini katero nadzira trener kluba.
 </p>
 
-<hr>
+<div class="row flex-spaces">
+    <a class="paper-btn" href="{data.org.html_url}">
+        <div class="col-12">
 
-<Container>
-    <Row>
-        <Col sm="3">
-            <Image fluid alt="Landscape" src="{data.org.avatar_url}"></Image>
-        </Col>
-        <Col>
-            <p><a href="{data.org.html_url}">{data.org.login}</a></p>
-            <p><b>{data.org.bio}</b></p>
-            <p>Število projektov: {data.org.public_repos}</p>
-            <p>Ustvarjen: {new Date(data.org.created_at).toLocaleDateString("sl-SI")}</p>
-        </Col>
-    </Row>
+            <div class="row flex-spaces">
+                <div class="xs-12 sm-3 col">
+                    <img class="no-border" src="{data.org.avatar_url}">
+                </div>
+                <div class="xs-12 sm-8 col">
+                    <h3>{data.org.login}</h3>
+                    <h4>{data.org.bio}</h4>
+                    <p>Število projektov: {data.org.public_repos}</p>
+                    <p>Ustvarjen: {new Date(data.org.created_at).toLocaleDateString("sl-SI")}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
 
-</Container>
+<div class="row flex-spaces">
+    {#each data.repos as repo}
+        <div class="xs-12 sm-6 align-middle">
+            <a class="paper-btn" href="{repo.html_url}">
+                <h4>{repo.name}</h4>
+                <b>{repo.description}</b>
+                <p>Programski jezik: {repo.language || 'brez'}</p>
+                <p>Ustvarjen: {new Date(repo.created_at).toLocaleDateString("sl-SI")}</p>
+            </a>
+        </div>
+    {/each}
+</div>
 
-{#each data.repos as repo}
-    <hr>
-    <p><a href="{repo.html_url}"><h5>{repo.name}</h5></a></p>
-    <p>{repo.description}</p>
-    <p>Programski jezik: {repo.language || 'brez'}</p>
-    <p>Ustvarjen: {new Date(repo.created_at).toLocaleDateString("sl-SI")}</p>
-{/each}
+<style>
+    h3 {
+        margin: 0;
+        font-weight: bold;
+    }
+    h4 {
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    .paper-btn {
+        padding: 5px 5px 0 5px;
+        margin: 5px 5px 5px 5px;
+    }
+</style>

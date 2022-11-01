@@ -1,7 +1,3 @@
-<script>
-    import {Col, Container, Figure, Image, Row} from "sveltestrap";
-</script>
-
 <p>
     Upravni oddelek je sestavljen iz nadzornega in upravnega odbora.
 </p>
@@ -30,32 +26,36 @@
     klubskih aktivnosti. V upravnem odboru so včlanjeni vsi trenerji kluba ter soustanovitelji.
 </p>
 
-<hr>
-<Container>
-    <Row>
-        <Col sm=4>
-            <a href="/clani/urosjarc">
-                <Figure caption="predsednik, ustanovitelj">
-                    <Image fluid alt="Landscape" src="/clani/urosjarc.png"></Image>
-                    Uroš Jarc
-                </Figure>
-            </a>
-        </Col>
-        <Col sm=4>
-            <a href="/clani/danijelkorbar">
-                <Figure caption="podpredsednik, soustanovitelj">
-                    <Image fluid alt="Landscape" src="/clani/danijelkorbar.png"></Image>
-                    Danijel Korbar
-                </Figure>
-            </a>
-        </Col>
-        <Col sm=4>
-            <a href="/clani/danilojezernik">
-                <Figure caption="podpredsednik, soustanovitelj">
-                    <Image fluid alt="Landscape" src="/clani/danilojezernik.png"></Image>
-                    Danilo Jezernik
-                </Figure>
-            </a>
-        </Col>
-    </Row>
-</Container>
+<div class="row flex-spaces">
+    <div class="col xs-4 sm-4 md-3 lg-2">
+        <a class="paper-btn" href="/clani/urosjarc">
+            <img src="/clani/urosjarc.png" alt="Card example image">
+            <p>Uroš Jarc</p>
+        </a>
+    </div>
+    <div class="col xs-4 sm-4 md-3 lg-2">
+        <a class="paper-btn" href="/clani/danilojezernik">
+            <img src="/clani/danilojezernik.png" alt="Card example image">
+            <p>Danilo Jezernik</p>
+        </a>
+    </div>
+    <div class="col xs-4 sm-4 md-3 lg-2">
+        <a class="paper-btn" href="/clani/danijelkorbar">
+            <img src="/clani/danijelkorbar.png" alt="Card example image">
+            <p>Danijel Korbar</p>
+        </a>
+    </div>
+    <div class="col-4">
+    </div>
+</div>
+
+
+<style>
+    a p {
+        text-align: center;
+        margin: 10px 0;
+    }
+    a {
+        padding: 0px;
+    }
+</style>

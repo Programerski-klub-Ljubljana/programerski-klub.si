@@ -1,4 +1,4 @@
-<b>Treniranje drugih ljudi jemljemo zelo resno. Tukaj ni več zajebancije. Da se lahko dokažeš
+<b class="text-danger">Treniranje drugih ljudi jemljemo zelo resno. Tukaj ni več zajebancije. Da se lahko dokažeš
     moraš najprej postati član potem pa lahko začneš z opravljanjem naloge ki preverijo tvoje vodstvene in tehnične sposobnosti.
     Trener lahko postaneš če...</b>
 
@@ -15,12 +15,12 @@
     </li>
 </ul>
 
-<b>Upravni odbor te po vseh opravljenih nalogah povabi na skupščino kjer poveš svoje želje glede svoje prihodnosti in kako se hočeš vključevati
+<b class="text-success">Upravni odbor te po vseh opravljenih nalogah povabi na skupščino kjer poveš svoje želje glede svoje prihodnosti in kako se hočeš vključevati
     v klubske aktivnosti. Upravni odbor sestavi načrt prilagojen tebi nato pa lahko uživaš prednosti trenerskega statusa.</b>
 
 <ul>
-    <li>Klub te bo pošteno plačal glede na število članov ki jih učiš.</li>
-    <li>Upravni odbor se bo potrudil da boš dobil toliko članov pod svoje okrilje kot si ti želiš.</li>
+    <li><b>Klub te bo pošteno plačal glede na število članov ki jih učiš.</b></li>
+    <li><b>Upravni odbor se bo potrudil da boš dobil toliko članov pod svoje okrilje kot si ti želiš.</b></li>
     <li>Dobiš pravico učiti in voditi vse člane kluba...</li>
     <ul>
         <li>Lahko učiš in vodiš vse oddeleke v klubu.</li>
@@ -33,7 +33,7 @@
     </ul>
 </ul>
 
-Imaš pa tudi odgovornosti ki se tičejo trenerskega statusa...
+<b class="text-secondary">Imaš pa tudi odgovornosti ki se tičejo trenerskega statusa...</b>
 
 <ul>
     <li>Nadaljno se izobražuješ v smeri programiranja in ohranjaš vrhunsko programersko formo.</li>

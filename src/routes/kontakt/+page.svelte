@@ -1,45 +1,41 @@
 <script>
-    import {Button, Col, Form, FormGroup, Input, Row} from "sveltestrap";
+
 </script>
 
 <p>
     Hvala ker ste se odločili vspostaviti kontakt z nami. Na vsak email odgovorimo kar se da hitro.
     V primeru dela lahko pričakujete odgovor najkasneje do večera istega dne na katerega ste poslali sporočilo...
 </p>
-<Form>
-    <Row>
-        <Col>
-            <Row>
-                <Col>
-                    <FormGroup>
-                        <Input placeholder="Vnesi svoj ime..."/>
-                    </FormGroup>
-                </Col>
-                <Col>
-                    <FormGroup>
-                        <Input placeholder="Vnesi svoj priimek..."/>
-                    </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <FormGroup>
-                        <Input placeholder="Vnesi email..."/>
-                    </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <FormGroup>
-                        <Input type="textarea" rows=9 placeholder="Sporočilo..."/>
-                    </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Button block>Poslji</Button>
-                </Col>
-            </Row>
-        </Col>
-    </Row>
-</Form>
+
+<div class="row flex-spaces">
+    <div class="col-fill col-sm-4">
+        <input type="text" class="input-block" placeholder="Ime...">
+    </div>
+    <div class="col-fill col-sm-4">
+        <input type="text" class="input-block" placeholder="Priimek...">
+    </div>
+    <div class="col-fill col-sm-4">
+        <input type="email" placeholder="Email...">
+    </div>
+</div>
+
+<div class="row flex-spaces">
+    <div class="col-12">
+        <textarea placeholder="Sporočilo..."></textarea>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn-block btn-success">Pošlji</button>
+    </div>
+</div>
+<style>
+    input, textarea {
+        resize: none;
+        width: 100%;
+    }
+    button {
+        margin-top: 20px;
+    }
+    .col-fill {
+        margin: 0 8px;
+    }
+</style>

@@ -1,14 +1,17 @@
 <script>
 </script>
-<p>
-    Preden podpišeš moraš vedeti da je mesečna članarina <b>40eu</b> katera je namenjena izklučno
-    delovanju kluba in v ceni se:
-</p>
+    <p class="text-primary">
+        Preden podpišeš moraš vedeti da je mesečna članarina <b class="text-danger">40eu</b> katera je namenjena izklučno
+        delovanju kluba in v ceni se:
+    </p>
+<b>
 <ul>
     <li>Izplača honorar trenerjem za njihovo delo.</li>
     <li>Najemnina prostorov v osnovnih, srednjih šolah kjer imamo treninge programiranja.</li>
     <li>Razvoj javnih projektov ki so namenjeni izobraževanju članov in širše javnosti.</li>
 </ul>
+
+</b>
 
 <div class="row">
     <div class="col-fill col-sm-6">
@@ -42,18 +45,18 @@
 <div class="row">
     <div class="col-fill col-12">
 
-    <fieldset class="form-group">
-        <label class="paper-check">
-            <input type="checkbox" name="paperChecks" value="option 1"> <span>Kot član bom redno plačeval mesečno članarino.</span>
-        </label>
-    </fieldset>
-    <fieldset class="form-group">
-        <label class="paper-check">
-            <input type="checkbox" name="paperChecks" value=""> <span>Kot član se bom držal pogojev poslovanja kluba.</span>
-        </label>
-    </fieldset>
+        <fieldset class="form-group">
+            <label class="paper-check">
+                <input type="checkbox" name="paperChecks" value="option 1"> <span>Kot član bom redno plačeval mesečno članarino.</span>
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <label class="paper-check">
+                <input type="checkbox" name="paperChecks" value=""> <span>Kot član se bom držal pogojev poslovanja kluba.</span>
+            </label>
+        </fieldset>
 
-    <button type="submit" class="btn-block btn-success">Potrdi</button>
+        <button type="submit" class="btn-block btn-success">Potrdi</button>
     </div>
 </div>
 
@@ -62,6 +65,7 @@
     input {
         width: 100%;
     }
+
     .col-fill {
         margin: 0 8px;
     }
