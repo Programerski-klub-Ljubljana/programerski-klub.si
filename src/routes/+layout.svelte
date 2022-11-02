@@ -62,8 +62,7 @@
     }
 
     #mozgani {
-        padding: 10px;
-        padding-bottom: 5px;
+        padding: 10px 10px 5px;
     }
 
     #glava, #content {
@@ -98,10 +97,7 @@
 
     #nazaj {
         float: left;
-        margin: 0;
-        margin-top: 10px;
-        margin-right: 5px;
-        margin-bottom: 2px;
+        margin: 10px 5px 2px 0;
     }
 
 </style>
