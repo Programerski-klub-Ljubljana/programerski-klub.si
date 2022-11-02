@@ -1,6 +1,8 @@
-<b class="text-danger">Treniranje drugih ljudi jemljemo zelo resno. Tukaj ni več zajebancije. Da se lahko dokažeš
+<p>
+    <b class="text-danger">Treniranje drugih ljudi jemljemo zelo resno. Tukaj ni več zajebancije. Da se lahko dokažeš
     moraš najprej postati član potem pa lahko začneš z opravljanjem naloge ki preverijo tvoje vodstvene in tehnične sposobnosti.
     Trener lahko postaneš če...</b>
+</p>
 
 <ul>
     <li>Opraviš vse <a href="https://github.com/Programerski-klub-Ljubljana/Programerske-naloge">Programerske-naloge</a>.</li>
@@ -15,7 +17,8 @@
     </li>
 </ul>
 
-<b class="text-success">Upravni odbor te po vseh opravljenih nalogah povabi na skupščino kjer poveš svoje želje glede svoje prihodnosti in kako se hočeš vključevati
+<b class="text-success">Upravni odbor te po vseh opravljenih nalogah povabi na skupščino kjer poveš svoje želje glede svoje prihodnosti in kako se
+    hočeš vključevati
     v klubske aktivnosti. Upravni odbor sestavi načrt prilagojen tebi nato pa lahko uživaš prednosti trenerskega statusa.</b>
 
 <ul>

@@ -20,10 +20,10 @@
         <div class="col-12">
 
             <div class="row flex-spaces">
-                <div class="xs-12 sm-3 col">
+                <div class="xs-5 sm-3 col">
                     <img class="no-border" src="{data.org.avatar_url}">
                 </div>
-                <div class="xs-12 sm-8 col">
+                <div class="xs-9 sm-9 col">
                     <h3>{data.org.login}</h3>
                     <h4>{data.org.bio}</h4>
                     <p>Število projektov: {data.org.public_repos}</p>
@@ -48,17 +48,18 @@
 </div>
 
 <style>
-    h3 {
+    img {
+        width: 100%;
+    }
+    h3, h4 {
         margin: 0;
         font-weight: bold;
     }
     h4 {
-        font-weight: bold;
-        margin: 0;
         margin-bottom: 10px;
     }
     .paper-btn {
-        padding: 5px 5px 0 5px;
+        padding: 10px 10px 0 10px;
         margin: 5px 5px 5px 5px;
     }
 </style>

@@ -16,21 +16,11 @@
     </b>
 </p>
 
-<div class="row flex-spaces">
-    <div class="col xs-4 sm-4 md-3 lg-2">
-        <a class="paper-btn" href="/clani/urosjarc">
+<div class="row">
+    <div class="col col-6 xs-5 sm-4 md-3 lg-2">
+        <a class="clan-btn paper-btn" href="/clani/urosjarc">
             <img src="/clani/urosjarc.png" alt="Card example image">
             <p>Uroš Jarc</p>
         </a>
     </div>
 </div>
-
-<style>
-    a p {
-        text-align: center;
-        margin: 10px 0;
-    }
-    a {
-        padding: 0px;
-    }
-</style>

@@ -2,43 +2,103 @@
     import 'papercss/dist/paper.min.css'
 </script>
 
-<div id="head" class="row">
-    <div class="xs-0 sm-2 col"></div>
-    <div class="xs-12 sm-8 col border shadow">
+<div id="glava" class="row flex-spaces">
+    <div id="mozgani" class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small">
         <h1 id="naslov">Programerski klub Ljubljana</h1>
-        <h2>Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo izkušeni trenerji.</h2>
-        <h3>Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih projektih, predvsem se pa zelo zabavamo. :)</h3>
-        <a class="paper-btn" href="/#content">Nazaj</a>
+        <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo izkušeni trenerji.</h2>
+        <h3 id="podpodnaslov">Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih
+            projektih,
+
+            <a id="nazaj" class="paper-btn" href="/#content">Nazaj</a>
+            predvsem se pa zelo zabavamo. :)</h3>
     </div>
-    <div class="xs-0 sm-2 col"></div>
 </div>
 
-<div class="row">
-    <div class="xs-0 sm-2 col"></div>
-    <div id="content" class="xs-12 sm-8  col border shadow">
+<div class="row flex-spaces">
+    <div id="content" class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small">
         <slot></slot>
     </div>
-    <div class="xs-0 sm-2 col-2 col"></div>
 </div>
 
-<style>
-    #head .col{
-        margin: 5px 5px 0 10px;
-        padding: 0 10px 10px 10px !important;
+<style global>
+    /* INPUTS, OUTPUTS =============================== */
+    input, textarea {
+        resize: none;
+        width: 100%;
     }
-    h1 {
-        font-size: 70px;
-    }
-    h1, h2, h3 {
+
+
+    /* CLAN KARTICA ================================== */
+    .clan-btn p {
         text-align: center;
-        padding: 0;
-        margin: 0;
-        margin-bottom: 20px;
+        margin: 10px 0;
     }
-   h2 {
-       font-size: 40px;
-   }
-   h3 {
-       font-size: 30px;
-   }
+
+    .clan-btn {
+        padding: 0;
+    }
+
+    /* IFRAME LOADER ================================= */
+    .iframe-loader {
+        background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">PLACEHOLDER</text></svg>') 0 0 no-repeat;
+    }
+
+    iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .iframe-loader {
+        width: 100%;
+        margin: 5px 0 20px 20px;
+        height: 300px;
+    }
+
+    /* THIS PAGE ======================================================== */
+    #mozgani, #content {
+        max-width: 1000px;
+    }
+    #mozgani {
+        padding: 10px;
+        padding-bottom: 5px;
+    }
+    #glava, #content {
+        margin: -15px 2px 0 2px;
+        padding: 0;
+    }
+
+    #content {
+        padding: 0 20px 0 15px;
+        margin-top: 30px;
+    }
+
+    #naslov, #podnaslov, #podpodnaslov {
+        text-align: center;
+        margin: 0;
+        padding: 5px;
+    }
+
+    #naslov {
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    #podnaslov {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    #podpodnaslov {
+        font-size: 25px;
+    }
+
+    #nazaj {
+        float: left;
+        margin: 0;
+        margin-top: 10px;
+        margin-right: 5px;
+        margin-bottom: 2px;
+    }
+
 </style>

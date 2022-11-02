@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <div class="row flex-middle flex-spaces">
     <div class="xs-12 sm-6 md-4 col">
         <a class="paper-btn btn-block btn-block btn-large btn-success" href="/vpis/clan#content">Postani član</a>
@@ -45,7 +42,3 @@
         <a class="paper-btn btn-block btn-large btn-success" href="/kontakt#content">Kontakt</a>
     </div>
 </div>
-
-<style>
-
-</style>

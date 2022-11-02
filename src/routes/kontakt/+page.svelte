@@ -8,10 +8,10 @@
 </p>
 
 <div class="row flex-spaces">
-    <div class="col-fill col-sm-4">
+    <div class="col-fill col-sm-4 margin-right-small">
         <input type="text" class="input-block" placeholder="Ime...">
     </div>
-    <div class="col-fill col-sm-4">
+    <div class="col-fill col-sm-4 margin-right-small">
         <input type="text" class="input-block" placeholder="Priimek...">
     </div>
     <div class="col-fill col-sm-4">
@@ -23,19 +23,10 @@
     <div class="col-12">
         <textarea placeholder="Sporočilo..."></textarea>
     </div>
+</div>
+
+<div class="row flex-spaces">
     <div class="col-12">
         <button type="submit" class="btn-block btn-success">Pošlji</button>
     </div>
 </div>
-<style>
-    input, textarea {
-        resize: none;
-        width: 100%;
-    }
-    button {
-        margin-top: 20px;
-    }
-    .col-fill {
-        margin: 0 8px;
-    }
-</style>
