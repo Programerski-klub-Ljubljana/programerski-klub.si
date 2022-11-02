@@ -20,7 +20,6 @@
         </div>
     </div>
 
-
     <div class="row flex-spaces">
         <div class="col-12">
             <textarea name="sporocilo" placeholder="Sporočilo..."></textarea>
