@@ -10,16 +10,16 @@
 <form action="https://formspree.io/f/mnqroljy" method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
-            <input name="ime" type="text" class="input-block" placeholder="Ime...">
+            <input required name="ime" type="text" class="input-block" placeholder="Ime...">
         </div>
         <div class="col-fill">
-            <input name="priimek" type="text" class="input-block" placeholder="Priimek...">
+            <input required name="priimek" type="text" class="input-block" placeholder="Priimek...">
         </div>
     </div>
 
     <div class="row">
         <div class="col-fill">
-            <textarea name="razlog-odhoda" placeholder="Zakaj odhajaš..."></textarea>
+            <textarea required name="razlog-odhoda" placeholder="Zakaj odhajaš..."></textarea>
         </div>
     </div>
 

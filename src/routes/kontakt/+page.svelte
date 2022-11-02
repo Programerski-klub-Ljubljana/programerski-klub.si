@@ -10,19 +10,19 @@
 <form action="https://formspree.io/f/mayklaew" method="POST">
     <div class="row flex-spaces">
         <div class="col-fill col-sm-4 margin-right-small">
-            <input name="ime" type="text" class="input-block" placeholder="Ime...">
+            <input required name="ime" type="text" class="input-block" placeholder="Ime...">
         </div>
         <div class="col-fill col-sm-4 margin-right-small">
-            <input name="priimek" type="text" class="input-block" placeholder="Priimek...">
+            <input required name="priimek" type="text" class="input-block" placeholder="Priimek...">
         </div>
         <div class="col-fill col-sm-4">
-            <input type="email" placeholder="Email...">
+            <input required type="email" placeholder="Email...">
         </div>
     </div>
 
     <div class="row flex-spaces">
         <div class="col-12">
-            <textarea name="sporocilo" placeholder="Sporočilo..."></textarea>
+            <textarea required name="sporocilo" placeholder="Sporočilo..."></textarea>
         </div>
     </div>
 
