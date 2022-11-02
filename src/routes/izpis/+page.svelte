@@ -7,23 +7,25 @@
     Bodi fino in se še kaj vidimo! :)
 </p>
 
-<div class="row">
-    <div class="col-fill margin-right-small">
-        <input type="text" class="input-block" placeholder="Ime...">
+<form action="https://formspree.io/f/mnqroljy" method="POST">
+    <div class="row">
+        <div class="col-fill margin-right-small">
+            <input name="ime" type="text" class="input-block" placeholder="Ime...">
+        </div>
+        <div class="col-fill">
+            <input name="priimek" type="text" class="input-block" placeholder="Priimek...">
+        </div>
     </div>
-    <div class="col-fill">
-        <input type="text" class="input-block" placeholder="Priimek...">
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-fill">
-        <textarea placeholder="Zakaj odhajaš..."></textarea>
+    <div class="row">
+        <div class="col-fill">
+            <textarea name="razlog-odhoda" placeholder="Zakaj odhajaš..."></textarea>
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-fill">
-        <button type="submit" class="btn-block btn-danger">Potrdi</button>
+    <div class="row">
+        <div class="col-fill">
+            <button type="submit" class="btn-block btn-danger">Potrdi</button>
+        </div>
     </div>
-</div>
+</form>

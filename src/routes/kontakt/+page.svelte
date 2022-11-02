@@ -7,26 +7,28 @@
     V primeru dela lahko pričakujete odgovor najkasneje do večera istega dne na katerega ste poslali sporočilo...
 </p>
 
-<div class="row flex-spaces">
-    <div class="col-fill col-sm-4 margin-right-small">
-        <input type="text" class="input-block" placeholder="Ime...">
+<form action="https://formspree.io/f/mayklaew" method="POST">
+    <div class="row flex-spaces">
+        <div class="col-fill col-sm-4 margin-right-small">
+            <input name="ime" type="text" class="input-block" placeholder="Ime...">
+        </div>
+        <div class="col-fill col-sm-4 margin-right-small">
+            <input name="priimek" type="text" class="input-block" placeholder="Priimek...">
+        </div>
+        <div class="col-fill col-sm-4">
+            <input type="email" placeholder="Email...">
+        </div>
     </div>
-    <div class="col-fill col-sm-4 margin-right-small">
-        <input type="text" class="input-block" placeholder="Priimek...">
-    </div>
-    <div class="col-fill col-sm-4">
-        <input type="email" placeholder="Email...">
-    </div>
-</div>
 
-<div class="row flex-spaces">
-    <div class="col-12">
-        <textarea placeholder="Sporočilo..."></textarea>
+    <div class="row flex-spaces">
+        <div class="col-12">
+            <textarea name="sporocilo" placeholder="Sporočilo..."></textarea>
+        </div>
     </div>
-</div>
 
-<div class="row flex-spaces">
-    <div class="col-12">
-        <button type="submit" class="btn-block btn-success">Pošlji</button>
+    <div class="row flex-spaces">
+        <div class="col-12">
+            <button type="submit" class="btn-block btn-success">Pošlji</button>
+        </div>
     </div>
-</div>
+</form>

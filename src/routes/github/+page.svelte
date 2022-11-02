@@ -21,7 +21,7 @@
 
             <div class="org-row row flex-spaces">
                 <div class="col-4 xs-4 sm-3 col">
-                    <img class="org-img no-border" src="{data.org.avatar_url}">
+                    <img class="org-img no-border" src="{data.org.avatar_url}" alt="Logo kluba in github organizacije, oglato srce ki se smeji">
                 </div>
                 <div class="sm-align-center xs-12 sm-9">
                     <h3 class="org-title">{data.org.login}</h3>
