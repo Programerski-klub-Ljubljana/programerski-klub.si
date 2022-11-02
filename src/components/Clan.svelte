@@ -4,7 +4,7 @@
 </script>
 
 <div class="col col-6 xs-5 sm-4 md-3 lg-2">
-    <a class="clan-btn paper-btn" href="/clani/{user}">
+    <a class="clan-btn paper-btn" href="/clani/{user}#content">
         <img src="/clani/{user}.png" alt="Sprednji profil osebe {name}">
         <p>{name}</p>
     </a>

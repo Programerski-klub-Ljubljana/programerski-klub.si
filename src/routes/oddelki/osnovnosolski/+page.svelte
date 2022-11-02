@@ -11,7 +11,7 @@
     <p>
         <b class="text-success">Za klub je to najpomembnejši oddelek. in zato treninge izvaja naš predsednik kluba in trenerji,
             katere preveri in trenira naš predsednik kluba dolgo časa preden lahko vodijo osnovnošolski oddelek.
-            Tukaj si lahko <a href="/vpis/trener">preberete več kaj mora član kluba vse narediti</a> preden lahko postane trener.</b>
+            Tukaj si lahko <a href="/vpis/trener#content">preberete več kaj mora član kluba vse narediti</a> preden lahko postane trener.</b>
     </p>
     <p>
         Na mladih svet stoji in enako velja za naš klub! Klub namenja največ financiranja ravno temu oddelku, in poskrbimo

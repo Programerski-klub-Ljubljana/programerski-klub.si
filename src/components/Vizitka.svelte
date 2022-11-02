@@ -17,7 +17,7 @@
         <h3 class="vizitka-desc">{desc}</h3>
         <p class="vizitka-links">
             <a href="tel:{tel}">{tel}</a>
-            <a href="{web}">{web}</a>
+            <a href="{web}">{link}</a>
             <a href="https://github.com/{github}">Git: {github}</a>
         </p>
     </div>

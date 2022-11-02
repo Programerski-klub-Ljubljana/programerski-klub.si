@@ -57,8 +57,12 @@
     }
 
     /* THIS PAGE ======================================================== */
+    body {
+        background-color: olivedrab;
+    }
     #mozgani, #content {
         max-width: 1000px;
+        background-color: white;
     }
 
     #mozgani {

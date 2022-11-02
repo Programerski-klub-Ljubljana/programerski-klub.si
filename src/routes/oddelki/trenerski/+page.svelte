@@ -3,7 +3,7 @@
 </script>
 
 <p>
-    V trenerskem oddelku se nahajajo vsi člani, ki so dosegli trenerski status po <a href="/vpis/trener">uspešno opravljenih nalog in preizkušnjah</a>.
+    V trenerskem oddelku se nahajajo vsi člani, ki so dosegli trenerski status po <a href="/vpis/trener#content">uspešno opravljenih nalog in preizkušnjah</a>.
     Vse trenerje kar nekaj časa preverja osebno naš predsednik kluba da vam lahko zagotovimo najvišji standard ki ga premore klub.
 </p>
 
