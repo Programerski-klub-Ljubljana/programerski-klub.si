@@ -1,3 +1,7 @@
+<script>
+    import Clan from "../../../components/Clan.svelte";
+</script>
+
 <p>
     V trenerskem oddelku se nahajajo vsi člani, ki so dosegli trenerski status po <a href="/vpis/trener">uspešno opravljenih nalog in preizkušnjah</a>.
     Vse trenerje kar nekaj časa preverja osebno naš predsednik kluba da vam lahko zagotovimo najvišji standard ki ga premore klub.
@@ -17,10 +21,5 @@
 </p>
 
 <div class="row">
-    <div class="col col-6 xs-5 sm-4 md-3 lg-2">
-        <a class="clan-btn paper-btn" href="/clani/urosjarc">
-            <img src="/clani/urosjarc.png" alt="Card example image">
-            <p>Uroš Jarc</p>
-        </a>
-    </div>
+    <Clan name="Uroš Jarc" user="urosjarc"/>
 </div>

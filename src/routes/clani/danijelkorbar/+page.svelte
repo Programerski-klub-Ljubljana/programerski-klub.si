@@ -1,23 +1,13 @@
 <script>
+    import Vizitka from "../../../components/Vizitka.svelte";
 </script>
-
-<div class="row">
-    <div class="col-4">
-        <img src="/clani/danijelkorbar.png">
-    </div>
-    <div class="col-8">
-        <h2>Danijel Korbar</h2>
-        <h3>Soustanovitelj kluba, podpredsednik kluba.</h3>
-        <ul>
-            <li>
-                <a href="https://danijelkorbar.com/">Web: danijelkorbar.com</a>
-            </li>
-            <li>
-                <a href="https://github.com/ethernal12">Github: ethernal12</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<Vizitka
+        user="danijelkorbar"
+        name="Danijel Korbar"
+        desc="Soustanovitelj kluba, podpredsednik."
+        web="https://danijelkorbar.com"
+        github="ethernal12"
+/>
 
 <p>
     Dobrovoljen novomeščan, vedno pripravljen sodelovati, pomagati in nasmejati.
@@ -40,12 +30,3 @@
     ustvarjamo.
 
 </p>
-
-<style>
-    h2, h3 {
-        margin: 0 10px 0 30px;
-    }
-    li {
-        font-size: 30px;
-    }
-</style>

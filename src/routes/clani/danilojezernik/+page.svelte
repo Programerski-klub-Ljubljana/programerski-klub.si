@@ -1,22 +1,14 @@
 <script>
+    import Vizitka from "../../../components/Vizitka.svelte";
 </script>
-<div class="row">
-    <div class="col-4">
-        <img src="/clani/danilojezernik.png">
-    </div>
-    <div class="col-8">
-        <h2>Danilo Jezernik</h2>
-        <h3>Soustanovitelj kluba, podpredsednik kluba.</h3>
-        <ul>
-            <li>
-                <a href="https://danijelkorbar.com/">Web: danilojezernik.com</a>
-            </li>
-            <li>
-                <a href="https://github.com/ethernal12">Github: danilojezernik</a>
-            </li>
-        </ul>
-    </div>
-</div>
+
+<Vizitka
+        user="danilojezernik"
+        name="Danilo Jezernik"
+        desc="Soustanovitelj kluba, podpredsednik."
+        web="https://danilojezernik.com"
+        github="danilojezernik"
+/>
 
 <p>
     Kot mlad fant vse do svojega 25. leta sem bil aktiven v številnih športih, kot so borilne veščine, gimnastika, zelo sem bil aktiven tudi v
@@ -52,12 +44,3 @@
     in končno sem ga našel, Uroša Jarca. Od takrat se dan za dnem učim novih stvari in v tem uživam. Gradnja serverja ter frontend-a,
     je nekaj v čemer sem se najdel!
 </p>
-
-<style>
-    h2, h3 {
-        margin: 0 10px 0 30px;
-    }
-    li {
-        font-size: 30px;
-    }
-</style>

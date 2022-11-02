@@ -1,25 +1,14 @@
 <script>
+import Vizitka from "../../../components/Vizitka.svelte";
 </script>
-<div class="row">
-    <div class="col-4">
-        <img src="/clani/urosjarc.png">
-    </div>
-    <div class="col-8">
-        <h2>Uroš Jarc</h2>
-        <h3>Ustanovitelj kluba, predsednik kluba.</h3>
-        <ul>
-            <li>
-                <a href="https://urosjarc.com/">Tel: 051-240-885</a>
-            </li>
-            <li>
-                <a href="https://urosjarc.com/">Web: urosjarc.com</a>
-            </li>
-            <li>
-                <a href="https://github.com/urosjarc">Github: urosjarc</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<Vizitka
+        user="urosjarc"
+        name="Uroš Jarc"
+        desc="Ustanovitelj kluba, predsednik."
+        web="https://urosjarc.com"
+        github="urosjarc"
+        tel="051-240-885"
+/>
 
 <p>
     Hodil sem na osnovno šolo Prule kjer sem se že v mladih letih programiral z jezikom LOGO.
@@ -91,12 +80,3 @@
     ustanovil "Programerski klub Ljubljana".
 
 </p>
-<style>
-    h2, h3 {
-        margin: 0 10px 0 30px;
-    }
-
-    li {
-        font-size: 25px;
-    }
-</style>

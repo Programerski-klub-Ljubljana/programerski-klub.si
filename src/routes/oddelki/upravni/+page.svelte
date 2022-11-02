@@ -1,3 +1,7 @@
+<script>
+    import Clan from "../../../components/Clan.svelte";
+</script>
+
 <p>
     Upravni oddelek je sestavljen iz nadzornega in upravnega odbora.
 </p>
@@ -15,22 +19,7 @@
 </p>
 
 <div class="row">
-    <div class="col col-6 xs-5 sm-4 md-3 lg-2">
-        <a class="clan-btn paper-btn" href="/clani/urosjarc">
-            <img src="/clani/urosjarc.png" alt="Card example image">
-            <p>Uroš Jarc</p>
-        </a>
-    </div>
-    <div class="col col-6 xs-5 sm-4 md-3 lg-2">
-        <a class="clan-btn paper-btn" href="/clani/danilojezernik">
-            <img src="/clani/danilojezernik.png" alt="Card example image">
-            <p>Danilo Jezernik</p>
-        </a>
-    </div>
-    <div class="col col-6 xs-5 sm-4 md-3 lg-2">
-        <a class="clan-btn paper-btn" href="/clani/danijelkorbar">
-            <img src="/clani/danijelkorbar.png" alt="Card example image">
-            <p>Danijel Korbar</p>
-        </a>
-    </div>
+    <Clan name="Uroš Jarc" user="urosjarc"/>
+    <Clan name="Danijel Korbar" user="danijelkorbar"/>
+    <Clan name="Danilo Jezernik" user="danilojezernik"/>
 </div>

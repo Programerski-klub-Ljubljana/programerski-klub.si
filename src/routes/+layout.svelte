@@ -28,19 +28,11 @@
     }
 
 
-    /* CLAN KARTICA ================================== */
-    .clan-btn p {
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .clan-btn {
-        padding: 0;
-    }
+    /* VIZITKA CLAN ================================== */
 
     /* IFRAME LOADER ================================= */
     .iframe-loader {
-        background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">PLACEHOLDER</text></svg>') 0 0 no-repeat;
+        background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">Loading...</text></svg>') 0 0 no-repeat;
     }
 
     iframe {

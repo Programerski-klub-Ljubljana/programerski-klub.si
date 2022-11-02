@@ -20,12 +20,12 @@
         <div class="col-12">
 
             <div class="row flex-spaces">
-                <div class="xs-5 sm-3 col">
-                    <img class="no-border" src="{data.org.avatar_url}">
+                <div class="col-9 xs-5 sm-3 col">
+                    <img class="org-img no-border" src="{data.org.avatar_url}">
                 </div>
-                <div class="xs-9 sm-9 col">
-                    <h3>{data.org.login}</h3>
-                    <h4>{data.org.bio}</h4>
+                <div class="xs-12 sm-9">
+                    <h3 class="org-title">{data.org.login}</h3>
+                    <h4 class="org-bio">{data.org.bio}</h4>
                     <p>Število projektov: {data.org.public_repos}</p>
                     <p>Ustvarjen: {new Date(data.org.created_at).toLocaleDateString("sl-SI")}</p>
                 </div>
@@ -37,28 +37,28 @@
 <div class="row flex-spaces">
     {#each data.repos as repo}
         <div class="xs-12 sm-6 align-middle">
-            <a class="paper-btn" href="{repo.html_url}">
-                <h4>{repo.name}</h4>
-                <b>{repo.description}</b>
-                <p>Programski jezik: {repo.language || 'brez'}</p>
-                <p>Ustvarjen: {new Date(repo.created_at).toLocaleDateString("sl-SI")}</p>
+            <a class="repo-btn paper-btn" href="{repo.html_url}">
+                <h4 class="repo-name">{repo.name}</h4>
+                <b class="repo-desc">{repo.description}</b>
+                <p class="repo-lang">Programski jezik: {repo.language || 'brez'}</p>
+                <p class="repo-created">Ustvarjen: {new Date(repo.created_at).toLocaleDateString("sl-SI")}</p>
             </a>
         </div>
     {/each}
 </div>
 
 <style>
-    img {
+    .org-img {
         width: 100%;
     }
-    h3, h4 {
+    .org-title, .org-bio, .repo-name {
         margin: 0;
         font-weight: bold;
     }
-    h4 {
-        margin-bottom: 10px;
+    .repo-name{
+        margin-bottom: 5px;
     }
-    .paper-btn {
+    .repo-btn {
         padding: 10px 10px 0 10px;
         margin: 5px 5px 5px 5px;
     }
