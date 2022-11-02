@@ -28,7 +28,16 @@
     }
 
 
-    /* VIZITKA CLAN ================================== */
+    /* CUSTOM ALIGN ================================== */
+    .sm-align-center {
+        text-align: center;
+    }
+
+    @media (min-width: 768px) {
+        .sm-align-center {
+            text-align: left;
+        }
+    }
 
     /* IFRAME LOADER ================================= */
     .iframe-loader {
@@ -51,10 +60,12 @@
     #mozgani, #content {
         max-width: 1000px;
     }
+
     #mozgani {
         padding: 10px;
         padding-bottom: 5px;
     }
+
     #glava, #content {
         margin: -15px 2px 0 2px;
         padding: 0;

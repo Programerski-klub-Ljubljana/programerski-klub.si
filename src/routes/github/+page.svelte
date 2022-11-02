@@ -19,15 +19,15 @@
     <a class="paper-btn" href="{data.org.html_url}">
         <div class="col-12">
 
-            <div class="row flex-spaces">
-                <div class="col-9 xs-5 sm-3 col">
+            <div class="org-row row flex-spaces">
+                <div class="col-4 xs-4 sm-3 col">
                     <img class="org-img no-border" src="{data.org.avatar_url}">
                 </div>
-                <div class="xs-12 sm-9">
+                <div class="sm-align-center xs-12 sm-9">
                     <h3 class="org-title">{data.org.login}</h3>
                     <h4 class="org-bio">{data.org.bio}</h4>
                     <p>Število projektov: {data.org.public_repos}</p>
-                    <p>Ustvarjen: {new Date(data.org.created_at).toLocaleDateString("sl-SI")}</p>
+                    <p class="org-created">Ustvarjen: {new Date(data.org.created_at).toLocaleDateString("sl-SI")}</p>
                 </div>
             </div>
         </div>
@@ -36,11 +36,11 @@
 
 <div class="row flex-spaces">
     {#each data.repos as repo}
-        <div class="xs-12 sm-6 align-middle">
-            <a class="repo-btn paper-btn" href="{repo.html_url}">
+        <div class="repo-row sm-12 md-6 col">
+            <a class="paper-btn" href="{repo.html_url}">
                 <h4 class="repo-name">{repo.name}</h4>
-                <b class="repo-desc">{repo.description}</b>
-                <p class="repo-lang">Programski jezik: {repo.language || 'brez'}</p>
+                <b>{repo.description}</b>
+                <p>Programski jezik: {repo.language || 'brez'}</p>
                 <p class="repo-created">Ustvarjen: {new Date(repo.created_at).toLocaleDateString("sl-SI")}</p>
             </a>
         </div>
@@ -48,6 +48,9 @@
 </div>
 
 <style>
+    .org-row {
+        margin-bottom: 0;
+    }
     .org-img {
         width: 100%;
     }
@@ -55,11 +58,10 @@
         margin: 0;
         font-weight: bold;
     }
-    .repo-name{
+    .repo-name {
         margin-bottom: 5px;
     }
-    .repo-btn {
-        padding: 10px 10px 0 10px;
-        margin: 5px 5px 5px 5px;
+    .repo-created, .org-created {
+        margin-bottom: 0;
     }
 </style>

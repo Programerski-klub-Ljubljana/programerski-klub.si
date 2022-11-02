@@ -12,7 +12,7 @@
     <div class="col-8 xs-5 sm-4 md-3 lg-3 col">
         <img class="shadow" src="/clani/{user}.png">
     </div>
-    <div class="col-12 xs-8 sm-8 md-9 lg-9">
+    <div class="sm-align-center col-12 xs-8 sm-8 md-9 lg-9">
         <h2 class="vizitka-title">{name}</h2>
         <h3 class="vizitka-desc">{desc}</h3>
         <p class="vizitka-links">
@@ -26,17 +26,13 @@
 <style>
     .vizitka-title, .vizitka-desc, .vizitka-links {
         margin: 0 10px 10px 0;
-        text-align: center;
     }
     .vizitka-desc {
         font-size: 30px;
         margin-bottom: 20px
     }
-    .vizitka-links {
-        font-size: 20px;
-        text-align: center;
-    }
     .vizitka-links a {
         margin-right: 10px;
+        font-size: 20px;
     }
 </style>
