@@ -16,7 +16,7 @@
 </p>
 
 <div class="row flex-spaces">
-    <a class="paper-btn" href="{data.org.html_url}">
+    <a target="_blank" class="paper-btn" href="{data.org.html_url}">
         <div class="col-12">
 
             <div class="org-row row flex-spaces">
@@ -37,7 +37,7 @@
 <div class="row flex-spaces">
     {#each data.repos as repo}
         <div class="repo-row sm-12 md-6 col">
-            <a class="paper-btn" href="{repo.html_url}">
+            <a target="_blank" class="paper-btn" href="{repo.html_url}">
                 <h4 class="repo-name">{repo.name}</h4>
                 <b>{repo.description}</b>
                 <p>Programski jezik: {repo.language || 'brez'}</p>

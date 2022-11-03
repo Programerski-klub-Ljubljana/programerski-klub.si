@@ -24,21 +24,21 @@
     </div>
 
     <p>
-        <b class="text-secondary">Za vse motivirane učence imamo tudi pripravljene redne tekme ki jih pripravlja <a
+        <b class="text-secondary">Za vse motivirane učence imamo tudi pripravljene redne tekme ki jih pripravlja <a target="_blank"
                 href="https://www.zotks.si/programiranje/razpis">Zveza za
             tehnično kulturo Slovenije</a>.
             Hkrati pa tekme organizira tudi naš klub med različnimi osnovnimi šolami kjer klub organizira svoje treninge.</b>
     </p>
 
     <p>
-        Za vse člane ki hodijo osnovnošolski razred imamo pripravljen program: <a href="https://scratch.mit.edu/">Programiranje v Scratch-u</a>
+        Za vse člane ki hodijo osnovnošolski razred imamo pripravljen program: <a target="_blank" href="https://scratch.mit.edu/">Programiranje v Scratch-u</a>
         V katerem se učenci zmeraj zelo zabavajo! Program je sestavljen na način da učencem ni potrebno tipkati na tipkovnici saj lahko programiranjo
         preko miške in sestavljajo program kot sestavljanko. Na treningu ustvarjamo večinoma igrice ki jih učenci oblikujejo in sprogramiranje
         tako kot oni želijo. Igrice so večinoma retro igrice
-        <a href="https://en.wikipedia.org/wiki/Pong">Pong</a>,
-        <a href="https://en.wikipedia.org/wiki/Pinball">Pinball</a>,
-        <a href="https://en.wikipedia.org/wiki/Space_Invaders">Space invaders</a>,
-        <a href="https://en.wikipedia.org/wiki/Pac-Man">Pac Man</a>, itd...
+        <a target="_blank" href="https://en.wikipedia.org/wiki/Pong">Pong</a>,
+        <a target="_blank" href="https://en.wikipedia.org/wiki/Pinball">Pinball</a>,
+        <a target="_blank" href="https://en.wikipedia.org/wiki/Space_Invaders">Space invaders</a>,
+        <a target="_blank" href="https://en.wikipedia.org/wiki/Pac-Man">Pac Man</a>, itd...
     </p>
 
     <p>

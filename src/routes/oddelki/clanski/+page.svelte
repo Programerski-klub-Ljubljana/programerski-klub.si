@@ -5,7 +5,7 @@
         numerične simulacije
         na fakulteti za računalništvo in informatiko.</b>
 </p>
-<p><b class="text-danger">Članski oddelek je organiziran v <a href="https://github.com/Programerski-klub-Ljubljana">github delavne skupine</a> katere
+<p><b class="text-danger">Članski oddelek je organiziran v <a target="_blank" href="https://github.com/Programerski-klub-Ljubljana">github delavne skupine</a> katere
     organizirajo izkušeni trenerji kluba. Delovna skupina je sestavljena iz 3 do 6 članov ki imajo enak nivo znanja, podobno starost, ter enake cilje kar se tiče programiranja.
     Trener se dobiva z skupino in jo trenira, uči in nadzira njen napredek.
 </b></p>
@@ -18,7 +18,7 @@
     v trenerja v našem klubu. Več si lahko prebereš na strani ki opisuje <a href="/vpis/trener#content">postopek pridobivanja trenerskega statusa</a>.
 </p>
 
-<p><b class="text-primary">Projekte se vodina <a href="https://github.com/Programerski-klub-Ljubljana">github profilu kluba</a>.
+<p><b class="text-primary">Projekte se vodina <a target="_blank" href="https://github.com/Programerski-klub-Ljubljana">github profilu kluba</a>.
     Vsa komunikacija izven treninga poteka preko githuba. Med treningom se trener z svojo skupino dobi na spletnem srečanju. Srečanja se organizirajo
     enkrat ali večkrat na teden kot je skupina interesirana ter kolikor to dovoljuje urnik trenerja.</b></p>
 
