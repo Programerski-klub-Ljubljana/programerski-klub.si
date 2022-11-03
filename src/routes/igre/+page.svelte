@@ -1,31 +1,5 @@
-<script>
-    import {Canvas} from '@threlte/core';
-    import {HTML} from '@threlte/extras';
-    import {Debug, World} from '@threlte/rapier';
-    import Scene from '../../libs/racer/Scene.svelte';
-</script>
-
-<div id="canvas">
-    <Canvas>
-        <World>
-            <Debug depthTest={false} depthWrite={false}/>
-
-            <Scene/>
-
-            <HTML slot="fallback" transform>
-            <p>
-                It seems your browser<br/>
-                doesn't support WASM.<br/>
-                I'm sorry.
-            </p>
-            </HTML>
-        </World>
-    </Canvas>
+<div class="row">
+    <div class="xs-12 sm-6 md-4 col">
+        <a class="paper-btn btn-block btn-block btn-large green" href="/igre/racer#content">Dirka z avti :)</a>
+    </div>
 </div>
-
-<style>
-    #canvas {
-        margin-top: 300px;
-        height: 800px;
-    }
-</style>

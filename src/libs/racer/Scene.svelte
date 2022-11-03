@@ -15,19 +15,19 @@
 
 <RigidBody dominance={1} position={{ y: 3, x: -10, z: -12 }}>
     <AutoColliders shape={'cuboid'}>
-        <Mesh geometry={new BoxGeometry(1, 1, 1)} material={new MeshStandardMaterial()} />
+        <Mesh geometry={new BoxGeometry(1, 1, 1)} material={new MeshStandardMaterial({wireframe: false})} />
     </AutoColliders>
 </RigidBody>
 
 <RigidBody dominance={-1} position={{ y: 3, x: -15, z: -14 }}>
     <AutoColliders shape={'cuboid'}>
-        <Mesh geometry={new BoxGeometry(3, 3, 3)} material={new MeshStandardMaterial()} />
+        <Mesh geometry={new BoxGeometry(3, 3, 3)} material={new MeshStandardMaterial({wireframe: false})} />
     </AutoColliders>
 </RigidBody>
 
 <RigidBody dominance={0} position={{ y: 3, x: -13, z: -10 }}>
     <AutoColliders shape={'cuboid'}>
-        <Mesh geometry={new BoxGeometry(2, 2, 2)} material={new MeshStandardMaterial()} />
+        <Mesh geometry={new BoxGeometry(2, 2, 2)} material={new MeshStandardMaterial({wireframe: false})} />
     </AutoColliders>
 </RigidBody>
 
