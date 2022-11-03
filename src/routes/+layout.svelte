@@ -1,6 +1,11 @@
 <script>
     import 'papercss/dist/paper.min.css'
+    import Background from "../libs/background/Background.svelte";
 </script>
+
+<Background>
+
+</Background>
 
 <div class="row flex-spaces" id="glava">
     <div class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small" id="mozgani">
