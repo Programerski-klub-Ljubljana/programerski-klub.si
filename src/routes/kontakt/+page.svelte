@@ -28,7 +28,7 @@
 
     <div class="row flex-spaces">
         <div class="col-12">
-            <button class="btn-block btn-success" type="submit">Pošlji</button>
+            <button class="btn-block green" type="submit">Pošlji</button>
         </div>
     </div>
 </form>

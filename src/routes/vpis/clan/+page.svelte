@@ -54,7 +54,7 @@
 
         </div>
         <div class="col-fill">
-            <button class="btn-block btn-success" type="submit">Potrdi</button>
+            <button class="btn-block green" type="submit">Potrdi</button>
         </div>
 
     </div>

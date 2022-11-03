@@ -25,7 +25,7 @@
 
     <div class="row">
         <div class="col-fill">
-            <button class="btn-block btn-danger" type="submit">Potrdi</button>
+            <button class="btn-block red" type="submit">Potrdi</button>
         </div>
     </div>
 </form>
