@@ -34,7 +34,7 @@
   "type": "module",
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.9.0",
-    "@sveltejs/adapter-node": "^1.0.0-next.100",
+    "@sveltejs/adapter-static": "^1.0.0-next.47",
     "@threlte/core": "^4.3.2",
     "@threlte/extras": "^4.4.1",
     "@threlte/rapier": "^0.5.0",
@@ -42,6 +42,5 @@
     "bootstrap-icons": "^1.9.1",
     "papercss": "^1.8.3",
     "three": "^0.145.0",
-    "tweakpane": "^3.1.0"
   }
 }

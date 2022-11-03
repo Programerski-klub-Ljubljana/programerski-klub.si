@@ -15,7 +15,8 @@
     <div class="modal-body">
         <label class="btn-close" for="modal-1">X</label>
         <h4 class="modal-title">Racer</h4>
-        <p class="modal-text">Hitra testna igra ki testira delovanje WebGL tehnologije.<br>Uporabljaš WASD (pogon) tipke in Space (zavore).<br><br>Pripravil: Uroš Jarc</p>
+        <p class="modal-text">Hitra testna igra ki testira delovanje WebGL tehnologije.<br>Uporabljaš WASD (pogon) tipke in Space (zavore).<br><br>Pripravil:
+            Uroš Jarc</p>
     </div>
 </div>
 
