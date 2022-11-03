@@ -15,7 +15,8 @@
 <p>
     <b class="text-success">
         Z vsemi učenci, ki pokažejo izredno razumevanje programiranja, hodimo na redne tekme programiranja ki jih organizira
-        fakulteti <a target="_blank" href="https://www.fmf.uni-lj.si/sl/">Matematiko in Fiziko</a>, <a href="https://www.fri.uni-lj.si/sl">Računalništvo in informatiko</a> ter <a href="https://www.zotks.si/programiranje/razpis">Zveza za tehnično kulturo Slovenije</a>.
+        fakulteti <a href="https://www.fmf.uni-lj.si/sl/" target="_blank" rel="noreferrer" >Matematiko in Fiziko</a>, <a href="https://www.fri.uni-lj.si/sl">Računalništvo
+        in informatiko</a> ter <a href="https://www.zotks.si/programiranje/razpis">Zveza za tehnično kulturo Slovenije</a>.
         Tekme vsako letno organizira tudi naš klub.
     </b>
 </p>

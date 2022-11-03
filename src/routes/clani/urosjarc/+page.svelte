@@ -1,13 +1,13 @@
 <script>
-import Vizitka from "../../../components/Vizitka.svelte";
+    import Vizitka from "../../../components/Vizitka.svelte";
 </script>
 <Vizitka
-        user="urosjarc"
-        name="Uroš Jarc"
         desc="Ustanovitelj kluba, predsednik."
-        web="https://urosjarc.com"
         github="urosjarc"
+        name="Uroš Jarc"
         tel="051-240-885"
+        user="urosjarc"
+        web="https://urosjarc.com"
 />
 
 <p>

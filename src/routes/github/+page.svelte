@@ -16,12 +16,12 @@
 </p>
 
 <div class="row flex-spaces">
-    <a target="_blank" class="paper-btn" href="{data.org.html_url}">
+    <a class="paper-btn" href="{data.org.html_url}" target="_blank" rel="noreferrer" >
         <div class="col-12">
 
             <div class="org-row row flex-spaces">
                 <div class="col-4 xs-4 sm-3 col">
-                    <img class="org-img no-border" src="{data.org.avatar_url}" alt="Logo kluba in github organizacije, oglato srce ki se smeji">
+                    <img alt="Logo kluba in github organizacije, oglato srce ki se smeji" class="org-img no-border" src="{data.org.avatar_url}">
                 </div>
                 <div class="sm-align-center xs-12 sm-9">
                     <h3 class="org-title">{data.org.login}</h3>
@@ -37,7 +37,7 @@
 <div class="row flex-spaces">
     {#each data.repos as repo}
         <div class="repo-row sm-12 md-6 col">
-            <a target="_blank" class="paper-btn" href="{repo.html_url}">
+            <a target="_blank" rel="noreferrer" class="paper-btn" href="{repo.html_url}">
                 <h4 class="repo-name">{repo.name}</h4>
                 <b>{repo.description}</b>
                 <p>Programski jezik: {repo.language || 'brez'}</p>
@@ -51,16 +51,20 @@
     .org-row {
         margin-bottom: 0;
     }
+
     .org-img {
         width: 100%;
     }
+
     .org-title, .org-bio, .repo-name {
         margin: 0;
         font-weight: bold;
     }
+
     .repo-name {
         margin-bottom: 5px;
     }
+
     .repo-created, .org-created {
         margin-bottom: 0;
     }

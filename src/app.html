@@ -4,25 +4,29 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-127TXDRQB9"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-127TXDRQB9');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-127TXDRQB9');
     </script>
 
     <title>PRK Ljubljana</title>
-    <link rel="icon" href="%sveltekit.assets%/favicon.png"/>
+    <link href="%sveltekit.assets%/favicon.png" rel="icon"/>
 
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta content="width=device-width" name="viewport"/>
 
-    <meta name="description" content="Združuje ljudi vseh starosti,
+    <meta content="Združuje ljudi vseh starosti,
         ki si želijo ali pa že znajo programirati v skupine ki jih vodijo naši trenerji.
-        Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih projektih, predvsem se pa zelo zabavamo. :)">
-    <meta name="keywords"
-          content="Ljubljana, programerski, programer, programiranje, klub, programerski klub, programerske skupine, tecaji programiranja, treningi programiranja.">
-    <meta name="author" content="Uroš Jarc">
+        Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih projektih, predvsem se pa zelo zabavamo. :)" name="description">
+    <meta content="Ljubljana, programerski, programer, programiranje, klub, programerski klub, programerske skupine, tecaji programiranja, treningi programiranja."
+          name="keywords">
+    <meta content="Uroš Jarc" name="author">
 
     %sveltekit.head%
 </head>

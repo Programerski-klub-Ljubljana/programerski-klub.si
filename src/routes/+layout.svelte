@@ -2,20 +2,20 @@
     import 'papercss/dist/paper.min.css'
 </script>
 
-<div id="glava" class="row flex-spaces">
-    <div id="mozgani" class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small">
+<div class="row flex-spaces" id="glava">
+    <div class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small" id="mozgani">
         <h1 id="naslov">Programerski klub Ljubljana</h1>
         <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo naši trenerji.</h2>
         <h3 id="podpodnaslov">Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih
             projektih,
 
-            <a id="nazaj" class="green paper-btn" href="/#content">Nazaj</a>
+            <a class="green paper-btn" href="/#content" id="nazaj">Nazaj</a>
             predvsem se pa zelo zabavamo. :)</h3>
     </div>
 </div>
 
 <div class="row flex-spaces">
-    <div id="content" class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small">
+    <div class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small" id="content">
         <slot></slot>
     </div>
 </div>
@@ -25,18 +25,23 @@
     .green {
         background-color: #afe179;
     }
+
     .purple {
         background-color: #c4abf8;
     }
+
     .red {
         background-color: palevioletred;
     }
+
     .blue {
         background-color: #dbebff;
     }
+
     .yellow {
         background-color: #f5d527;
     }
+
     .orange {
         background-color: #e8a949;
     }

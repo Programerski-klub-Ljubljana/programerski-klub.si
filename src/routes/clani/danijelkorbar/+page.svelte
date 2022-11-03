@@ -2,11 +2,11 @@
     import Vizitka from "../../../components/Vizitka.svelte";
 </script>
 <Vizitka
-        user="danijelkorbar"
-        name="Danijel Korbar"
         desc="Soustanovitelj kluba, podpredsednik."
-        web="https://danijelkorbar.com"
         github="ethernal12"
+        name="Danijel Korbar"
+        user="danijelkorbar"
+        web="https://danijelkorbar.com"
 />
 
 <p>

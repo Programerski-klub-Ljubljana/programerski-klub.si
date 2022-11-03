@@ -10,7 +10,7 @@
 </p>
 <br>
 
-<iframe title="Dokumenti kluba" src="https://drive.google.com/embeddedfolderview?id=1oKZzrawX_JM1Vj7efFtSWUQsQ6Tfo-Er#list"></iframe>
+<iframe src="https://drive.google.com/embeddedfolderview?id=1oKZzrawX_JM1Vj7efFtSWUQsQ6Tfo-Er#list" title="Dokumenti kluba"></iframe>
 
 <style>
     iframe {

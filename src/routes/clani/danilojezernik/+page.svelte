@@ -3,11 +3,11 @@
 </script>
 
 <Vizitka
-        user="danilojezernik"
-        name="Danilo Jezernik"
         desc="Soustanovitelj kluba, podpredsednik."
-        web="https://danilojezernik.com"
         github="danilojezernik"
+        name="Danilo Jezernik"
+        user="danilojezernik"
+        web="https://danilojezernik.com"
 />
 
 <p>

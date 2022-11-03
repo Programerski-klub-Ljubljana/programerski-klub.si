@@ -1,4 +1,3 @@
-
 <div>
     <p>
         <b class="text-danger">V osnovnošolskem oddelku je med treningi največ poudarka na prijateljstvu, treniranje čustvene, socijalne intiligence,
@@ -19,26 +18,28 @@
     </p>
 
     <div class="iframe-loader shadow">
-        <iframe src="https://www.youtube.com/embed/BlmBDrnhd2I" title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0"
+                src="https://www.youtube.com/embed/BlmBDrnhd2I" title="YouTube video player"></iframe>
     </div>
 
     <p>
-        <b class="text-secondary">Za vse motivirane učence imamo tudi pripravljene redne tekme ki jih pripravlja <a target="_blank"
-                href="https://www.zotks.si/programiranje/razpis">Zveza za
+        <b class="text-secondary">Za vse motivirane učence imamo tudi pripravljene redne tekme ki jih pripravlja <a href="https://www.zotks.si/programiranje/razpis"
+                                                                                                                    target="_blank" rel="noreferrer" >Zveza
+            za
             tehnično kulturo Slovenije</a>.
             Hkrati pa tekme organizira tudi naš klub med različnimi osnovnimi šolami kjer klub organizira svoje treninge.</b>
     </p>
 
     <p>
-        Za vse člane ki hodijo osnovnošolski razred imamo pripravljen program: <a target="_blank" href="https://scratch.mit.edu/">Programiranje v Scratch-u</a>
+        Za vse člane ki hodijo osnovnošolski razred imamo pripravljen program: <a href="https://scratch.mit.edu/" target="_blank" rel="noreferrer" >Programiranje v
+        Scratch-u</a>
         V katerem se učenci zmeraj zelo zabavajo! Program je sestavljen na način da učencem ni potrebno tipkati na tipkovnici saj lahko programiranjo
         preko miške in sestavljajo program kot sestavljanko. Na treningu ustvarjamo večinoma igrice ki jih učenci oblikujejo in sprogramiranje
         tako kot oni želijo. Igrice so večinoma retro igrice
-        <a target="_blank" href="https://en.wikipedia.org/wiki/Pong">Pong</a>,
-        <a target="_blank" href="https://en.wikipedia.org/wiki/Pinball">Pinball</a>,
-        <a target="_blank" href="https://en.wikipedia.org/wiki/Space_Invaders">Space invaders</a>,
-        <a target="_blank" href="https://en.wikipedia.org/wiki/Pac-Man">Pac Man</a>, itd...
+        <a href="https://en.wikipedia.org/wiki/Pong" target="_blank" rel="noreferrer" >Pong</a>,
+        <a href="https://en.wikipedia.org/wiki/Pinball" target="_blank" rel="noreferrer" >Pinball</a>,
+        <a href="https://en.wikipedia.org/wiki/Space_Invaders" target="_blank" rel="noreferrer" >Space invaders</a>,
+        <a href="https://en.wikipedia.org/wiki/Pac-Man" target="_blank" rel="noreferrer" >Pac Man</a>, itd...
     </p>
 
     <p>

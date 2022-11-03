@@ -1,4 +1,4 @@
-import type { PageLoad } from './$types';
+import type {PageLoad} from './$types';
 
 export const load: PageLoad = async ({params}) => {
     const res_org = await fetch('https://api.github.com/users/Programerski-klub-Ljubljana');

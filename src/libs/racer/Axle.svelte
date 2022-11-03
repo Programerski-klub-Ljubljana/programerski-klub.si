@@ -27,20 +27,20 @@
         rigidBodyB.set(axleRigidBody);
     $: $joint?.setContactsEnabled(false);
     $: if (isSteered) {
-        ;
+
         $joint?.configureMotorPosition($steeringAngle * -1 * DEG2RAD, 1000000, 0);
     }
 </script>
 
 <Group {position}>
     <RigidBody bind:rigidBody={axleRigidBody}>
-        <Collider mass={1} shape={'cuboid'} args={[0.03, 0.03, 0.03]}/>
+        <Collider args={[0.03, 0.03, 0.03]} mass={1} shape={'cuboid'}/>
     </RigidBody>
 
     <Wheel
-            {isDriven}
             anchor={{ z: side === 'left' ? 0.2 : -0.2 }}
-            position={{ z: side === 'left' ? 0.2 : -0.2 }}
+            {isDriven}
             parentRigidBody={axleRigidBody}
+            position={{ z: side === 'left' ? 0.2 : -0.2 }}
     />
 </Group>

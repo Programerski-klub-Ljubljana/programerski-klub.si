@@ -10,22 +10,22 @@
 <form action="https://formspree.io/f/mnqroljy" method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
-            <input required name="ime" type="text" class="input-block" placeholder="Ime...">
+            <input class="input-block" name="ime" placeholder="Ime..." required type="text">
         </div>
         <div class="col-fill">
-            <input required name="priimek" type="text" class="input-block" placeholder="Priimek...">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-fill">
-            <textarea required name="razlog-odhoda" placeholder="Zakaj odhajaš..."></textarea>
+            <input class="input-block" name="priimek" placeholder="Priimek..." required type="text">
         </div>
     </div>
 
     <div class="row">
         <div class="col-fill">
-            <button type="submit" class="btn-block btn-danger">Potrdi</button>
+            <textarea name="razlog-odhoda" placeholder="Zakaj odhajaš..." required></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-fill">
+            <button class="btn-block btn-danger" type="submit">Potrdi</button>
         </div>
     </div>
 </form>

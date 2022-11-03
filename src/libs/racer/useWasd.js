@@ -1,5 +1,6 @@
-import { onDestroy } from 'svelte';
-import { derived, get, writable } from 'svelte/store';
+import {onDestroy} from 'svelte';
+import {derived, get, writable} from 'svelte/store';
+
 export const useWasd = () => {
     const wasdKeys = writable({
         w: false,

@@ -1,25 +1,27 @@
-<script  context="module">
-    import { writable } from 'svelte/store';
+<script context="module">
+    import {writable} from 'svelte/store';
+
     export const useCar = () => {
         return getContext('threlte-car-context');
     };
 </script>
 
 <script>
-    import { Group, Mesh, useFrame } from '@threlte/core';
-    import { Collider, RigidBody, useRapier } from '@threlte/rapier';
-    import { getContext, onDestroy, setContext } from 'svelte';
-    import { BoxBufferGeometry, MeshStandardMaterial, Vector3 } from 'three';
+    import {Group, Mesh, useFrame} from '@threlte/core';
+    import {Collider, RigidBody, useRapier} from '@threlte/rapier';
+    import {getContext, onDestroy, setContext} from 'svelte';
+    import {BoxBufferGeometry, MeshStandardMaterial, Vector3} from 'three';
     import Axle from './Axle.svelte';
+
     export let position = undefined;
     export let rotation = undefined;
     let parentRigidBody;
     const carContext = {
         speed: writable(0)
     };
-    const { speed } = carContext;
+    const {speed} = carContext;
     setContext('threlte-car-context', carContext);
-    const { world } = useRapier();
+    const {world} = useRapier();
     const v3 = new Vector3();
     useFrame(() => {
         const s = parentRigidBody.linvel();
@@ -43,7 +45,7 @@
 
 <Group {position} {rotation}>
     <RigidBody bind:rigidBody={parentRigidBody} canSleep={false}>
-        <Collider mass={0.8} shape={'cuboid'} args={[1.25, 0.4, 0.5]} />
+        <Collider args={[1.25, 0.4, 0.5]} mass={0.8} shape={'cuboid'}/>
 
         <!-- CAR BODY MESH -->
         <Mesh
@@ -52,38 +54,38 @@
                 material={new MeshStandardMaterial()}
         />
 
-        <slot />
+        <slot/>
     </RigidBody>
 
     <!-- FRONT AXLES -->
     <Axle
-            side={'left'}
+            anchor={{ x: -1.2, z: 0.8, y: -0.4 }}
             isSteered
             {parentRigidBody}
             position={{ x: -1.2, z: 0.8, y: -0.4 }}
-            anchor={{ x: -1.2, z: 0.8, y: -0.4 }}
+            side={'left'}
     />
     <Axle
-            side={'right'}
+            anchor={{ x: -1.2, z: -0.8, y: -0.4 }}
             isSteered
             {parentRigidBody}
             position={{ x: -1.2, z: -0.8, y: -0.4 }}
-            anchor={{ x: -1.2, z: -0.8, y: -0.4 }}
+            side={'right'}
     />
 
     <!-- BACK AXLES -->
     <Axle
+            anchor={{ x: 1.2, z: 0.8, y: -0.4 }}
             isDriven
-            side={'left'}
             {parentRigidBody}
             position={{ x: 1.2, z: 0.8, y: -0.4 }}
-            anchor={{ x: 1.2, z: 0.8, y: -0.4 }}
+            side={'left'}
     />
     <Axle
+            anchor={{ x: 1.2, z: -0.8, y: -0.4 }}
             isDriven
-            side={'right'}
             {parentRigidBody}
             position={{ x: 1.2, z: -0.8, y: -0.4 }}
-            anchor={{ x: 1.2, z: -0.8, y: -0.4 }}
+            side={'right'}
     />
 </Group>

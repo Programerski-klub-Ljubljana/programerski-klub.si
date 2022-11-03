@@ -1,14 +1,15 @@
 <p>
     <b class="text-danger">Treniranje drugih ljudi jemljemo zelo resno. Tukaj ni več zajebancije. Da se lahko dokažeš
-    moraš najprej postati član potem pa lahko začneš z opravljanjem naloge ki preverijo tvoje vodstvene in tehnične sposobnosti.
-    Trener lahko postaneš če...</b>
+        moraš najprej postati član potem pa lahko začneš z opravljanjem naloge ki preverijo tvoje vodstvene in tehnične sposobnosti.
+        Trener lahko postaneš če...</b>
 </p>
 
 <ul>
-    <li>Opraviš vse <a target="_blank" href="https://github.com/Programerski-klub-Ljubljana/Programerske-naloge">Programerske-naloge</a>.</li>
-    <li>Z pull-requestom dodaŠ 10 nalog v github projekt: <a target="_blank" href="https://github.com/Programerski-klub-Ljubljana/Programerske-naloge">Programerske-naloge</a>.
+    <li>Opraviš vse <a href="https://github.com/Programerski-klub-Ljubljana/Programerske-naloge" target="_blank" rel="noreferrer" >Programerske-naloge</a>.</li>
+    <li>Z pull-requestom dodaŠ 10 nalog v github projekt: <a href="https://github.com/Programerski-klub-Ljubljana/Programerske-naloge"
+                                                             target="_blank" rel="noreferrer" >Programerske-naloge</a>.
     </li>
-    <li>Z pull-requestom oddaŠ igro v github projekt: <a target="_blank" href="https://github.com/Programerski-klub-Ljubljana/programerski-klub.si">programerski-klub.si</a>.
+    <li>Z pull-requestom oddaŠ igro v github projekt: <a href="https://github.com/Programerski-klub-Ljubljana/programerski-klub.si" target="_blank" rel="noreferrer" >programerski-klub.si</a>.
     </li>
     <li>Vodiš večkrat, vsakega od oddelka kluba pod nadzorom predsednika kluba.</li>
     <li>V primeru da se opazi kaj drugega kot vrhunsko znanje programiranja z pomankljivim tehničnim znanjem, čustvena nestabilnost, šibek občutek za

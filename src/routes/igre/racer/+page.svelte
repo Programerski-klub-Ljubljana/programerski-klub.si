@@ -5,7 +5,7 @@
     import Scene from '../../../libs/racer/Scene.svelte';
 </script>
 
-<div id="gumbi" class="row margin-top">
+<div class="row margin-top" id="gumbi">
     <a class="paper-btn yellow margin-right-small" href="/igre#content">Igre</a>
     <label class="paper-btn orange" for="modal-1">Navodila</label>
 </div>

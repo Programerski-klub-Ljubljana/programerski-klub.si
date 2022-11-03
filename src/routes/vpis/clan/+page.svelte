@@ -1,4 +1,3 @@
-
 <p class="text-primary">
     Preden podpišeš moraš vedeti da je <b class="text-success">mesečna članarina 40eu</b> katera je namenjena izklučno
     delovanju kluba in v ceni se <b class="text-success">izplača plača trenerjem za njihovo delo,
@@ -9,30 +8,30 @@
 <form action="https://formspree.io/f/mwkzwava" method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
-            <input required name="ime" type="text" class="input-block" placeholder="Ime...">
+            <input class="input-block" name="ime" placeholder="Ime..." required type="text">
         </div>
         <div class="col-fill">
-            <input required name="priimek" type="text" class="input-block" placeholder="Priimek...">
+            <input class="input-block" name="priimek" placeholder="Priimek..." required type="text">
         </div>
     </div>
     <div class="row">
         <div class="col-fill margin-right-small">
-            <input required name="dan-rojstva" type="number" placeholder="Dan rojstva...">
+            <input name="dan-rojstva" placeholder="Dan rojstva..." required type="number">
         </div>
         <div class="col-fill margin-right-small">
-            <input required name="mesec-rojstva" type="number" placeholder="Mesec rojstva...">
+            <input name="mesec-rojstva" placeholder="Mesec rojstva..." required type="number">
         </div>
         <div class="col-fill">
-            <input required name="leto-rojstva"  type="number" placeholder="Leto rojstva...">
+            <input name="leto-rojstva" placeholder="Leto rojstva..." required type="number">
         </div>
     </div>
 
     <div class="row">
         <div class="col-fill margin-right-small">
-            <input required name="email" type="email" placeholder="Email...">
+            <input name="email" placeholder="Email..." required type="email">
         </div>
         <div class="col-fill">
-            <input required name="phone" type="tel" placeholder="Telefon...">
+            <input name="phone" placeholder="Telefon..." required type="tel">
         </div>
     </div>
 
@@ -55,7 +54,7 @@
 
         </div>
         <div class="col-fill">
-            <button  type="submit" class="btn-block btn-success">Potrdi</button>
+            <button class="btn-block btn-success" type="submit">Potrdi</button>
         </div>
 
     </div>

@@ -1,10 +1,11 @@
 <script>
-    import { MotorModel } from '@dimforge/rapier3d-compat';
-    import { Mesh } from '@threlte/core';
-    import { Collider, RigidBody, useRevoluteJoint } from '@threlte/rapier';
-    import { CylinderBufferGeometry, MeshStandardMaterial } from 'three';
-    import { DEG2RAD } from 'three/src/math/MathUtils';
-    import { useWasd } from './useWasd.js';
+    import {MotorModel} from '@dimforge/rapier3d-compat';
+    import {Mesh} from '@threlte/core';
+    import {Collider, RigidBody, useRevoluteJoint} from '@threlte/rapier';
+    import {CylinderBufferGeometry, MeshStandardMaterial} from 'three';
+    import {DEG2RAD} from 'three/src/math/MathUtils';
+    import {useWasd} from './useWasd.js';
+
     export let position = undefined;
     export let parentRigidBody = undefined;
     export let anchor;
@@ -12,7 +13,7 @@
     export let isDriven = false;
     const wasd = useWasd();
     let isSpaceDown = false;
-    const { rigidBodyA, rigidBodyB, joint } = useRevoluteJoint(anchor, {}, { z: 1 });
+    const {rigidBodyA, rigidBodyB, joint} = useRevoluteJoint(anchor, {}, {z: 1});
     $: if (parentRigidBody)
         rigidBodyA.set(parentRigidBody);
     $: $joint?.configureMotorModel(MotorModel.AccelerationBased);
@@ -34,23 +35,23 @@
     };
 </script>
 
-<svelte:window on:keydown={onKeyDown} on:keyup={onKeyUp} />
+<svelte:window on:keydown={onKeyDown} on:keyup={onKeyUp}/>
 
-<RigidBody canSleep={false} {position} bind:rigidBody={$rigidBodyB}>
+<RigidBody bind:rigidBody={$rigidBodyB} canSleep={false} {position}>
     <Collider
-            mass={1}
-            friction={1.5}
-            shape={'cylinder'}
             args={[0.12, 0.3]}
             bind:collider
+            friction={1.5}
+            mass={1}
             rotation={{ x: 90 * DEG2RAD }}
+            shape={'cylinder'}
     />
 
     <!-- WHEEL MESH -->
     <Mesh
             castShadow
-            rotation={{ x: 90 * DEG2RAD }}
             geometry={new CylinderBufferGeometry(0.3, 0.3, 0.24)}
             material={new MeshStandardMaterial()}
+            rotation={{ x: 90 * DEG2RAD }}
     />
 </RigidBody>
