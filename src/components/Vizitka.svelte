@@ -10,7 +10,7 @@
 
 <div class="row flex-spaces">
     <div class="col-8 xs-5 sm-4 md-3 lg-3 col">
-        <img class="shadow" src="/clani/{user}.png">
+        <img class="shadow" src="/clani/{user}.png" alt="Sprednji profil osebe {name}">
     </div>
     <div class="sm-align-center col-12 xs-8 sm-8 md-9 lg-9">
         <h2 class="vizitka-title">{name}</h2>

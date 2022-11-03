@@ -5,11 +5,11 @@
 <div id="glava" class="row flex-spaces">
     <div id="mozgani" class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small">
         <h1 id="naslov">Programerski klub Ljubljana</h1>
-        <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo izkušeni trenerji.</h2>
+        <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo naši trenerji.</h2>
         <h3 id="podpodnaslov">Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih
             projektih,
 
-            <a id="nazaj" class="paper-btn" href="/#content">Nazaj</a>
+            <a id="nazaj" class="green paper-btn" href="/#content">Nazaj</a>
             predvsem se pa zelo zabavamo. :)</h3>
     </div>
 </div>
@@ -21,6 +21,26 @@
 </div>
 
 <style global>
+    /* COLORS */
+    .green {
+        background-color: #afe179;
+    }
+    .purple {
+        background-color: #c4abf8;
+    }
+    .red {
+        background-color: palevioletred;
+    }
+    .blue {
+        background-color: #dbebff;
+    }
+    .yellow {
+        background-color: #f5d527;
+    }
+    .orange {
+        background-color: #e8a949;
+    }
+
     /* INPUTS, OUTPUTS =============================== */
     input, textarea {
         resize: none;
@@ -60,6 +80,7 @@
     body {
         background-color: olivedrab;
     }
+
     #mozgani, #content {
         max-width: 1000px;
         background-color: white;
