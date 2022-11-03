@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
-	import {BoxBufferGeometry, MeshStandardMaterial} from "three";
+	import {IcosahedronGeometry, MeshStandardMaterial} from "three";
 
-	const geometry = new BoxBufferGeometry(1, 1, 1)
+	const geometry = new IcosahedronGeometry(1, 0)
 	const material = new MeshStandardMaterial({color: 'olive'})
 </script>
 
@@ -19,7 +19,7 @@
 		contactForceEventThreshold={30}
 		restitution={0.4}
 		shape={'cuboid'}
-		args={[0.5, 0.5, 0.5]}
+		args={[0.7, 0.7, 0.7]}
 	/>
 	<Mesh castShadow receiveShadow {geometry} {material} />
 </RigidBody>
