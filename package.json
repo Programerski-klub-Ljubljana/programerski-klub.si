@@ -41,6 +41,6 @@
     "@tweakpane/core": "^1.1.0",
     "bootstrap-icons": "^1.9.1",
     "papercss": "^1.8.3",
-    "three": "^0.145.0",
+    "three": "^0.145.0"
   }
 }
