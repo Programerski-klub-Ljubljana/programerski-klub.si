@@ -9,7 +9,7 @@
 	}
 
 	const getRandomPosition = () => {
-		return new Vector3(20 - Math.random() * 40, 7 , -7)
+		return new Vector3(20 - Math.random() * 40, 9 , -10)
 	}
 
 	const getRandomRotation = () => {
