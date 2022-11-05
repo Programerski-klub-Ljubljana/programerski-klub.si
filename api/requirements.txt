@@ -1,4 +1,0 @@
-fastapi
-uvicorn
-fastapi-mail
-python-dotenv
