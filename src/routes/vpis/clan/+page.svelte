@@ -1,5 +1,6 @@
 <script>
     import moment from 'moment';
+    import {api_vpis_clan} from "../../../stores.js";
 
     moment().format();
 
@@ -27,7 +28,7 @@
     izobraževanju članov in širše javnosti.</b></p>
 
 
-<form action="https://formspree.io/f/mwkzwava" method="POST">
+<form action="{api_vpis_clan}" method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
             <input class="input-block" name="ime" placeholder="Tvoje ime..." required type="text">
