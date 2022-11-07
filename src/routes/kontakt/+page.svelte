@@ -1,5 +1,6 @@
 <script>
 
+import {FORMS_KONTAKT} from "../../env.js";
 </script>
 
 <p>
@@ -7,7 +8,7 @@
     V primeru dela lahko pričakujete odgovor najkasneje do večera istega dne na katerega ste poslali sporočilo...
 </p>
 
-<form action="https://formspree.io/f/mayklaew" method="POST">
+<form action="{FORMS_KONTAKT}" method="POST">
     <div class="row flex-spaces">
         <div class="col-fill col-sm-4 margin-right-small">
             <input class="input-block" name="ime" placeholder="Ime..." required type="text">
@@ -16,7 +17,7 @@
             <input class="input-block" name="priimek" placeholder="Priimek..." required type="text">
         </div>
         <div class="col-fill col-sm-4">
-            <input placeholder="Email..." required type="email">
+            <input placeholder="Email..." name="email" required type="email">
         </div>
     </div>
 

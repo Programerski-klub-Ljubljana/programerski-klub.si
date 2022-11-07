@@ -1,5 +1,6 @@
 <script>
     import moment from 'moment';
+    import {FORMS_VPIS} from "../../../env.js";
 
     moment().format();
 
@@ -27,7 +28,7 @@
     izobraževanju članov in širše javnosti.</b></p>
 
 
-<form action="https://formspree.io/f/mwkzwava" method="POST">
+<form action="{FORMS_VPIS}" method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
             <input class="input-block" name="ime" placeholder="Tvoje ime..." required type="text">
@@ -38,31 +39,31 @@
     </div>
     <div class="row">
         <div class="col-fill margin-right-small">
-            <input on:keyup={on_keyup} bind:value={danRojstva} name="dan-rojstva" placeholder="Dan rojstva..." required type=number>
+            <input on:keyup={on_keyup} bind:value={danRojstva} name="dan_rojstva" placeholder="Dan rojstva..." required type=number>
         </div>
         <div class="col-fill margin-right-small">
-            <input on:keyup={on_keyup} bind:value={mesecRojstva} name="mesec-rojstva" placeholder="Mesec rojstva..." required type=number>
+            <input on:keyup={on_keyup} bind:value={mesecRojstva} name="mesec_rojstva" placeholder="Mesec rojstva..." required type=number>
         </div>
         <div class="col-fill">
-            <input on:keyup={on_keyup} bind:value={letoRojstva} name="leto-rojstva" placeholder="Leto rojstva..." required type=number>
+            <input on:keyup={on_keyup} bind:value={letoRojstva} name="leto_rojstva" placeholder="Leto rojstva..." required type=number>
         </div>
     </div>
 
     {#if show_parent}
         <div class="row">
             <div class="col-fill margin-right-small">
-                <input class="input-block" name="ime-skrbnika" placeholder="Ime skrbnika..." required type="text">
+                <input class="input-block" name="ime_skrbnika" placeholder="Ime skrbnika..." required type="text">
             </div>
             <div class="col-fill">
-                <input class="input-block" name="priimek-skrbnika" placeholder="Priimek skrbnika..." required type="text">
+                <input class="input-block" name="priimek_skrbnika" placeholder="Priimek skrbnika..." required type="text">
             </div>
         </div>
         <div class="row">
             <div class="col-fill margin-right-small">
-                <input name="email-skrbnika" placeholder="Email skrbnika (za račune)..." required type="email">
+                <input name="email_skrbnika" placeholder="Email skrbnika (za račune)..." required type="email">
             </div>
             <div class="col-fill">
-                <input name="telefon-skrbnika" placeholder="Telefon skrbnika (za nujne primere)..." required type="tel">
+                <input name="telefon_skrbnika" placeholder="Telefon skrbnika (za nujne primere)..." required type="tel">
             </div>
         </div>
         <div class="row">

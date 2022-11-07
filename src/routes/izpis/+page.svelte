@@ -1,3 +1,7 @@
+<script>
+    import {FORMS_IZPIS} from "../../env.js";
+</script>
+
 <p>Hej! Škoda ker nas zapuščaš... Dan ne bo enak brez tebe :(</p>
 <p>Ful bi bilo cool če bi nam povedal
     zakaj zapuščaš klub da bi se lahko popravili in izboljšali!
@@ -7,7 +11,7 @@
     Bodi fino in se še kaj vidimo! :)
 </p>
 
-<form action="https://formspree.io/f/mnqroljy" method="POST">
+<form action="{FORMS_IZPIS}" method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
             <input class="input-block" name="ime" placeholder="Ime..." required type="text">
@@ -19,7 +23,7 @@
 
     <div class="row">
         <div class="col-fill">
-            <textarea name="razlog-odhoda" placeholder="Zakaj odhajaš..." required></textarea>
+            <textarea name="razlog_odhoda" placeholder="Zakaj odhajaš..." required></textarea>
         </div>
     </div>
 
