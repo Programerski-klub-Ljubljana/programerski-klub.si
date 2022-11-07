@@ -1,6 +1,16 @@
 <script>
     import 'papercss/dist/paper.min.css'
     import Background from "../libs/background/Background.svelte";
+    import { browser } from "$app/environment";
+
+    if (browser) {
+        document.body.addEventListener("keydown", function (event) {
+            if (event.key === "3") {
+                window.location.replace("/login");
+            }
+        });
+    }
+
 </script>
 
 <Background>
