@@ -3,10 +3,10 @@ from pathlib import Path
 routes = ''
 root = Path('src/routes')
 for name in root.rglob('+page.svelte'):
-    name = str(name).replace('/+page.svelte', '')
+    name = str(Path(name).parent)
     route = str(Path(name).relative_to(root))
     route = route.replace('.', '')
-
+    print(route)
     routes += f"""
     <url>
         <loc>https://programerski-klub.si/{route}</loc>

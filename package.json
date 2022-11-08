@@ -13,7 +13,7 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
-    "@playwright/test": "^1.25.0",
+    "@playwright/test": "^1.27.1",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/three": "^0.144.0",
@@ -40,6 +40,7 @@
     "@threlte/rapier": "^0.5.0",
     "@tweakpane/core": "^1.1.0",
     "bootstrap-icons": "^1.9.1",
+    "chromium": "^3.0.3",
     "moment": "^2.29.4",
     "papercss": "^1.8.3",
     "three": "^0.145.0"
