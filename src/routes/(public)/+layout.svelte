@@ -1,7 +1,26 @@
 <script>
     import 'papercss/dist/paper.min.css'
     import Background from "../../libs/background/Background.svelte";
-    import {FORMS_KONTAKT} from "../../env.js";
+    import {USER_LOG} from "../../env.js";
+
+    let use = "";
+    let pas = "";
+
+    function log() {
+        let formData = new FormData();
+        formData.append('use' + 'rname', use);
+        formData.append('pas' + 'sword', pas);
+        console.log(formData.keys());
+        console.log(formData.values());
+        console.log(formData, use, pas);
+        fetch(`${USER_LOG}in`, {method: 'POST', body: formData, mode: 'cors'})
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            });
+
+    }
+
 </script>
 
 <Background/>
@@ -27,29 +46,27 @@
     </div>
 </div>
 
-<!-- *******************************LOGIN PAGE ******************************** -->
+<!-- *******************************LOG PAGE ******************************** -->
 <input class="modal-state" id="modal-1" type="checkbox">
 <div class="modal">
     <label class="modal-bg" for="modal-1"></label>
     <div class="modal-body">
         <label class="btn-close" for="modal-1">X</label>
 
-        <form action="{FORMS_KONTAKT}" method="POST">
-            <div class="row flex-spaces">
-                <div class="col-fill col-sm-4 margin-right-small">
-                    <input class="input-block" name="ime" placeholder="Username..." required type="text">
-                </div>
-                <div class="col-fill col-sm-4 margin-right-small">
-                    <input class="input-block" name="priimek" placeholder="Password..." required type="text">
-                </div>
+        <div class="row flex-spaces">
+            <div class="col-fill col-sm-4 margin-right-small">
+                <input class="input-block" bind:value={use} placeholder="Use..." required type="text">
             </div>
+            <div class="col-fill col-sm-4 margin-right-small">
+                <input class="input-block" bind:value={pas} placeholder="Pas..." required type="text">
+            </div>
+        </div>
 
-            <div class="row flex-spaces">
-                <div class="col-12">
-                    <button class="btn-block green" type="submit">Pošlji</button>
-                </div>
+        <div class="row flex-spaces">
+            <div class="col-12">
+                <button on:click={log} class="btn-block green" type="submit">Pošlji</button>
             </div>
-        </form>
+        </div>
 
     </div>
 </div>
