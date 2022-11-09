@@ -23,14 +23,15 @@
 </div>
 
 <style>
-	#background {
-		position: absolute;
-		top: 0;
-		left: 0;
+    #background {
+        position: absolute;
+        top: 0;
+        left: 0;
         height: 100vh;
         width: 100vw;
         z-index: -100;
-	}
+    }
+
     p {
         font-size: 0.75rem;
         line-height: 1rem;
