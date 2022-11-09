@@ -1,7 +1,19 @@
 <script>
     import 'papercss/dist/paper.min.css'
     import Background from "../libs/background/Background.svelte";
+    import {browser} from "$app/environment";
+    import {DASHBOARD_SHORTCUT_KEY} from "../env.js";
+
+    if (browser) {
+        document.body.addEventListener("keydown", function (event) {
+            if (event.key === DASHBOARD_SHORTCUT_KEY) {
+                window.location.replace("/login");
+            }
+        });
+    }
+
 </script>
+
 
 <Background>
 
@@ -10,7 +22,8 @@
 <div class="row flex-spaces" id="glava">
     <div class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small" id="mozgani">
         <h1 id="naslov">Programerski klub Ljubljana</h1>
-        <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih vodijo naši trenerji.</h2>
+        <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih
+            vodijo naši trenerji.</h2>
         <h3 id="podpodnaslov">Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih
             projektih,
 
