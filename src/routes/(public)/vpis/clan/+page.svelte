@@ -1,6 +1,6 @@
 <script>
     import moment from 'moment';
-    import {FORMS_VPIS} from "../../../../env.js";
+    import {FORMS_VPIS} from "../../../../services/api.ts";
 
 
     moment().format();

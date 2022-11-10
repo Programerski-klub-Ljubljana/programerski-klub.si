@@ -1,5 +1,5 @@
 <script>
-    import {FORMS_IZPIS} from "../../../env.js";
+    import {FORMS_IZPIS} from "../../../services/api.ts";
 </script>
 
 <p>Hej! Škoda ker nas zapuščaš... Dan ne bo enak brez tebe :(</p>

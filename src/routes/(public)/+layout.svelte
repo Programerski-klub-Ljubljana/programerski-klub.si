@@ -1,24 +1,18 @@
 <script>
     import 'papercss/dist/paper.min.css'
-    import Background from "../../libs/background/Background.svelte";
-    import {USER_LOG} from "../../env.js";
+    import Background from "../../games/background/Background.svelte";
+    import {UserService} from "../../services/index.js";
 
-    let use = "";
-    let pas = "";
+    let username = "";
+    let password = "";
 
     function log() {
-        let formData = new FormData();
-        formData.append('use' + 'rname', use);
-        formData.append('pas' + 'sword', pas);
-        console.log(formData.keys());
-        console.log(formData.values());
-        console.log(formData, use, pas);
-        fetch(`${USER_LOG}in`, {method: 'POST', body: formData, mode: 'cors'})
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            });
-
+        UserService.forAccessTokenUserLoginPost({
+            username: username,
+            password: password
+        }).then(token => {
+            console.log(token);
+        });
     }
 
 </script>
@@ -55,10 +49,10 @@
 
         <div class="row flex-spaces">
             <div class="col-fill col-sm-4 margin-right-small">
-                <input class="input-block" bind:value={use} placeholder="Use..." required type="text">
+                <input class="input-block" bind:value={username} placeholder="Use..." required type="text">
             </div>
             <div class="col-fill col-sm-4 margin-right-small">
-                <input class="input-block" bind:value={pas} placeholder="Pas..." required type="text">
+                <input class="input-block" bind:value={password} placeholder="Pas..." required type="text">
             </div>
         </div>
 

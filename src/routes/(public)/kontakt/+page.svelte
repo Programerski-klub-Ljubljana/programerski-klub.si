@@ -1,6 +1,6 @@
 <script>
 
-    import {FORMS_KONTAKT} from "../../../env.js";
+    import {FORMS_KONTAKT} from "../../../services/api.ts";
 </script>
 
 <p>

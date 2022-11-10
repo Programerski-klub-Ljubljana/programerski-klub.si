@@ -2,7 +2,7 @@
     import {Canvas} from '@threlte/core';
     import {HTML} from '@threlte/extras';
     import {Debug, World} from '@threlte/rapier';
-    import Scene from '../../../../libs/racer/Scene.svelte';
+    import Scene from '../../../../games/racer/Scene.svelte';
 </script>
 
 <div class="row margin-top" id="gumbi">
