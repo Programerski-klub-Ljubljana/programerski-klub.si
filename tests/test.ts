@@ -21,6 +21,7 @@ exec("py sitemap.py", (error, stdout, stderr) => {
 test('check links', async ({page}) => {
     await chromium.launch();
     for (let i = 0; i < linkArray.length; i++) {
+        console.log('fe')
         await page.goto(`${linkArray[i]}`);
         console.log(`in ------------- ${linkArray[i]} `)
         const hrefs = await page.$$eval('a', as => as.map(a => a.href));
