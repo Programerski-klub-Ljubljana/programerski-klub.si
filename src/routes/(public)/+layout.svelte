@@ -1,19 +1,7 @@
-<script>
+<script lang="ts">
     import 'papercss/dist/paper.min.css'
     import Background from "../../games/background/Background.svelte";
-    import {UserService} from "../../services/index.js";
 
-    let username = "";
-    let password = "";
-
-    function log() {
-        UserService.forAccessTokenUserLoginPost({
-            username: username,
-            password: password
-        }).then(token => {
-            console.log(token);
-        });
-    }
 
 </script>
 
@@ -22,7 +10,7 @@
 <div class="row flex-spaces" id="glava">
     <div class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small" id="mozgani">
         <h1 id="naslov">
-            <label for="modal-1">Programerski klub Ljubljana</label>
+            <a href="/admin/login">Programerski klub Ljubljana</a>
         </h1>
         <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih
             vodijo naši trenerji.</h2>
@@ -40,31 +28,6 @@
     </div>
 </div>
 
-<!-- *******************************LOG PAGE ******************************** -->
-<input class="modal-state" id="modal-1" type="checkbox">
-<div class="modal">
-    <label class="modal-bg" for="modal-1"></label>
-    <div class="modal-body">
-        <label class="btn-close" for="modal-1">X</label>
-
-        <div class="row flex-spaces">
-            <div class="col-fill col-sm-4 margin-right-small">
-                <input class="input-block" bind:value={username} placeholder="Use..." required type="text">
-            </div>
-            <div class="col-fill col-sm-4 margin-right-small">
-                <input class="input-block" bind:value={password} placeholder="Pas..." required type="text">
-            </div>
-        </div>
-
-        <div class="row flex-spaces">
-            <div class="col-12">
-                <button on:click={log} class="btn-block green" type="submit">Pošlji</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- *******************************LOGIN PAGE ******************************** -->
 
 
 <style global>

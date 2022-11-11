@@ -4,7 +4,7 @@
     import {Collider, RigidBody, useRevoluteJoint} from '@threlte/rapier';
     import {CylinderBufferGeometry, MeshStandardMaterial} from 'three';
     import {DEG2RAD} from 'three/src/math/MathUtils';
-    import {useWasd} from './useWasd.js';
+    import {useWasd} from './useWasd.ts';
 
     export let position = undefined;
     export let parentRigidBody = undefined;

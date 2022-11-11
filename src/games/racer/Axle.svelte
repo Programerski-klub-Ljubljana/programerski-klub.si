@@ -4,7 +4,7 @@
     import {spring} from 'svelte/motion';
     import {clamp, DEG2RAD, mapLinear} from 'three/src/math/MathUtils';
     import {useCar} from './Car.svelte';
-    import {useWasd} from './useWasd.js';
+    import {useWasd} from './useWasd.ts';
     import Wheel from './Wheel.svelte';
 
     export let position = undefined;

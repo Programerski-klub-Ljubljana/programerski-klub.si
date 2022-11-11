@@ -8,18 +8,20 @@ export const useWasd = () => {
         s: false,
         d: false
     });
-    const onKeyDown = (e) => {
+    const onKeyDown = (e: { key: string; }) => {
         if (!Object.keys(get(wasdKeys)).includes(e.key))
             return;
         wasdKeys.update((keys) => {
+            // @ts-ignore
             keys[e.key] = true;
             return keys;
         });
     };
-    const onKeyUp = (e) => {
+    const onKeyUp = (e: { key: string; }) => {
         if (!Object.keys(get(wasdKeys)).includes(e.key))
             return;
         wasdKeys.update((keys) => {
+            // @ts-ignore
             keys[e.key] = false;
             return keys;
         });
