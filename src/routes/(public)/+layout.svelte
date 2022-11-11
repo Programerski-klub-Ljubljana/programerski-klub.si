@@ -10,7 +10,7 @@
 <div class="row flex-spaces" id="glava">
     <div class="xs-11 sm-10 md-10 lg-8 col border shadow shadow-small" id="mozgani">
         <h1 id="naslov">
-            <a href="/admin/login">Programerski klub Ljubljana</a>
+            <a href="/admin">Programerski klub Ljubljana</a>
         </h1>
         <h2 id="podnaslov">Združuje ljudi vseh starosti, ki si želijo ali pa že znajo programirati v skupine ki jih
             vodijo naši trenerji.</h2>
@@ -27,7 +27,6 @@
         <slot></slot>
     </div>
 </div>
-
 
 
 <style global>

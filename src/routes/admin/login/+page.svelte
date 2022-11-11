@@ -1,17 +1,12 @@
 <script>
-    import {onMount} from "svelte";
     import {OpenAPI, UserApi} from "/src/api/index.ts";
 
     let username = "";
     let password = "";
 
-    onMount(async () => {
-        let user = await UserApi.info()
-        console.log(user);
-    });
-
     function log() {
         UserApi.login({password, username}).then(token => {
+            console.log(token);
             OpenAPI.TOKEN = token;
         });
     }
