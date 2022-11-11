@@ -1,11 +1,11 @@
-from pathlib import Path
+from pathlib import PurePosixPath, Path
 
 def init():
     routes = ''
     root = Path('src/routes')
     for name in root.rglob('+page.svelte'):
-        name = Path(name).parent
-        route = str(Path(name).relative_to(root))
+        name = PurePosixPath(name).parent
+        route = str(PurePosixPath(name).relative_to(root))
         route = route.replace('.', '')
         for ele in ['(public)', '']:
             route = route.replace(ele, '')
