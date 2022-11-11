@@ -7,8 +7,12 @@ def init():
         name = Path(name).parent
         route = str(Path(name).relative_to(root))
         route = route.replace('.', '')
+        for ele in ['(public)', '']:
+            route = route.replace(ele, '')
+        if not route.startswith('/'):
+            route = '/' + route
 
-        print(name)
+        print(route)
 
         routes += f"""
         <url>
@@ -23,7 +27,5 @@ def init():
     </urlset>
     '''
 
-    with open('static/sitemap.xml', 'w') as f:
-        f.write(sitemap)
-
-init()
+with open('static/sitemap.xml', 'w') as f:
+    f.write(init())

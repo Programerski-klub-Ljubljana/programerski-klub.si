@@ -1,13 +1,17 @@
 <script>
     import {OpenAPI, UserApi} from "/src/api/index.ts";
+    import * as utils from "../../../utils";
 
     let username = "";
     let password = "";
+    console.log('login');
 
     function log() {
         UserApi.login({password, username}).then(token => {
-            console.log(token);
-            OpenAPI.TOKEN = token;
+            OpenAPI.TOKEN = token.access_token;
+            utils.route('/admin');
+        }).catch(err => {
+            alert(err);
         });
     }
 </script>
