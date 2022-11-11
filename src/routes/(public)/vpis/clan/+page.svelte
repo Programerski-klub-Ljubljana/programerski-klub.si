@@ -1,6 +1,5 @@
 <script>
     import moment from 'moment';
-    import {FORMS_VPIS} from "../../../../services/api.ts";
 
 
     moment().format();
@@ -29,7 +28,7 @@
     izobraževanju članov in širše javnosti.</b></p>
 
 
-<form action="{FORMS_VPIS}" method="POST">
+<form method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
             <input class="input-block" name="ime" placeholder="Tvoje ime..." required type="text">

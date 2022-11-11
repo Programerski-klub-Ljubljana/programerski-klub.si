@@ -1,6 +1,5 @@
 <script>
 
-    import {FORMS_KONTAKT} from "../../../services/api.ts";
 </script>
 
 <p>
@@ -8,7 +7,7 @@
     V primeru dela lahko pričakujete odgovor najkasneje do večera istega dne na katerega ste poslali sporočilo...
 </p>
 
-<form action="{FORMS_KONTAKT}" method="POST">
+<form method="POST">
     <div class="row flex-spaces">
         <div class="col-fill col-sm-4 margin-right-small">
             <input class="input-block" name="ime" placeholder="Ime..." required type="text">
