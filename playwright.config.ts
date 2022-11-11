@@ -1,6 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
+	timeout:150000,
 	use: {
 		channel: 'chrome',
 	},
