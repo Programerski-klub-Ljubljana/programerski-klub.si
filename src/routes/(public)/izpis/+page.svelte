@@ -1,5 +1,4 @@
 <script>
-    import {FORMS_IZPIS} from "../../../services/api.ts";
 </script>
 
 <p>Hej! Škoda ker nas zapuščaš... Dan ne bo enak brez tebe :(</p>
@@ -11,7 +10,7 @@
     Bodi fino in se še kaj vidimo! :)
 </p>
 
-<form action="{FORMS_IZPIS}" method="POST">
+<form method="POST">
     <div class="row">
         <div class="col-fill margin-right-small">
             <input class="input-block" name="ime" placeholder="Ime..." required type="text">
