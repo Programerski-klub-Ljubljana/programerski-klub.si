@@ -18,7 +18,7 @@
 <p>
     Med delom na skupnem projektu trenerji simulirajo realno delo, ki ga opravljajo profesijonalni programerji zaposleni v industriji.
     Projekti so take narave da jih lahko člani uporabijo kot portfolijo ko iščejo željeno programersko službo ali pa če želijo napredovati
-    v trenerja v našem klubu. Več si lahko prebereš na strani ki opisuje <a href="/src/routes/vpisroutes/vpis/trener#content">postopek pridobivanja trenerskega statusa</a>.
+    v trenerja v našem klubu. Več si lahko prebereš na strani ki opisuje <a href="/vpis/trener#content">postopek pridobivanja trenerskega statusa</a>.
 </p>
 
 <p><b class="text-primary">Projekte se vodina <a href="https://github.com/Programerski-klub-Ljubljana" target="_blank" rel="noreferrer">github profilu
