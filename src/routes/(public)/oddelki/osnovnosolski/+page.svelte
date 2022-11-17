@@ -38,7 +38,7 @@
         V katerem se učenci zmeraj zelo zabavajo! Program je sestavljen na način da učencem ni potrebno tipkati na tipkovnici saj lahko programiranjo
         preko miške in sestavljajo program kot sestavljanko. Na treningu ustvarjamo večinoma igrice ki jih učenci oblikujejo in sprogramiranje
         tako kot oni želijo. Igrice so večinoma retro igrice
-        <a href="https://en.wikipedia.org/wiki/Pong" target="_blank" rel="noreferrer">Pong</a>,
+        <a href="https://en.wikipedia.org/wiki/Pongsss" target="_blank" rel="noreferrer">Pong</a>,
         <a href="https://en.wikipedia.org/wiki/PinballS" target="_blank" rel="noreferrer">Pinball</a>,
         <a href="https://en.wikipedia.org/wiki/Space_Invaders" target="_blank" rel="noreferrer">Space invaders</a>,
         <a href="https://en.wikipedia.org/wiki/Pac-Man" target="_blank" rel="noreferrer">Pac Man</a>, itd...
