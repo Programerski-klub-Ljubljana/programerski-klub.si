@@ -8,7 +8,7 @@
         user="danijelkorbar"
         web="https://danijelkorbar.com"
 />
-<img src="/clani/corruptPic.png" alt="corrupt picture">
+
 <p>
     Dobrovoljen novomeščan, vedno pripravljen sodelovati, pomagati in nasmejati.
 </p>
