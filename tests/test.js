@@ -15,7 +15,6 @@ test.describe('Test links and images', () => {
         await page.goto('/sitemap.xml');
         sitemap = await page.content();
         imagesAndLinks = await returnArrays(sitemap);
-
     });
 
     test("Test all links", async  () => {

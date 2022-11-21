@@ -3,37 +3,30 @@ import fs from "fs";
 
 let routesArray = [];
 let all_images = [];
-let all_links = [];
+let array = [];
 const port = '4173';
 
 // GET ALL ROUTE LINKS AND IMAGES
 export async function returnArrays(sitemap) {
     routesArray = findAllRoutes(sitemap);
-    return await axios.all(routesArray.map(routes => axios.get(routes))).then(axios.spread((...responses) => {
 
-        //FIND ALL IMAGES
+    await axios.all(routesArray.map(routes => axios.get(routes))).then(axios.spread((...responses) => {
+
+        // FIND ALL IMAGES
         all_images = findAllImages(responses);
         // FIND ALL THE LINKS
-        all_links = findAllLinks(responses);
+        array = findAllLinks(responses);
 
-        return {all_links, all_images};
     }));
+    return {all_links: array, all_images};
 }
 
 export const findAllRoutes = (sitemap) => {
-
     //FIND ALL ROUTES
-    let result;
-    const a_match = /<loc>(.*)</gm;
-    result = a_match.exec(sitemap);
-    while (result) {
-        result = a_match.exec(sitemap);
-        if (result) {
-            routesArray.push(result[1])
-        }
-    }
+    const regex = /<loc>(.*)</gm;
+    const routes = findWithRegex(sitemap, false, regex);
     // GET ALL CLIENT ROUTES...
-    routesArray.map((route, i) => {
+    routes.map((route, i) => {
         routesArray[i] = route.replace('https://programerski-klub.si//', `http://localhost:${port}/`)
     });
 
@@ -41,65 +34,19 @@ export const findAllRoutes = (sitemap) => {
 }
 
 export function findAllImages(responses) {
-    let all_images = [];
-    responses.map(responses => {
-            //FIND ALL IMAGES
-            const a_match = /\b(?:href|src)="([^\s"]*\.(?:png|jpg|bmp))"/gm;
-            let result;
-            result = a_match.exec(responses.data);
-            while (result) {
-                result = a_match.exec(responses.data);
-                if (result) {
-                    if (!all_images.includes(result[1])) {
-                        all_images.push(result[1]);
-                    }
 
-                }
-            }
-
-        }
-    )
-    //PARSE ALL IMAGES
-    all_images.map((link, i) => {
-        if (link.charAt(0) === '/') {
-            all_images.splice(i, 1, `http://localhost:${port}${link}`)
-        }
-    })
-    return all_images
+    const regex = /\b(?:href|src)="([^\s"]*\.(?:png|jpg|bmp))"/gm;
+    const neki = findWithRegex(responses, true, regex);
+    return parse(neki);
 }
 
 export function findAllLinks(responses) {
-    let all_links = [];
-    responses.map(response => {
-        //FIND ALL LINKS
-        const a_match = /href\s*=\s*"(.*?)"/gms;
-        let result;
 
-        result = a_match.exec(response.data);
-        while (result) {
-            result = a_match.exec(response.data);
-            if (result) {
-                if (!all_links.includes(result[1])) {
-                    all_links.push(result[1]);
-                }
+    const regex = /href\s*=\s*"(.*?)"/gms;
+    // FIND ALL LINKS
+    let all_links = findWithRegex(responses, true, regex);
 
-            }
-        }
-    })
-    all_links.map((link, i) => {
-        link = link.replace('..', '');
-        if (link.charAt(0) === '.') {
-            link = link.replace('.', '');
-        }
-        if (link.charAt(0) === '/') {
-            all_links.splice(i, 1, `http://localhost:${port}${link}`)
-
-        }
-        if (link.includes('tel')) {
-            all_links.splice(i, 1)
-        }
-    });
-    return all_links
+    return parse(all_links);
 }
 
 export function writeResultsToFile(test_results, name) {
@@ -115,5 +62,71 @@ export function writeResultsToFile(test_results, name) {
         }
     );
 }
+
+export function parse(links) {
+    links.map((link, i) => {
+        link = link.replace('..', '');
+        if (link.charAt(0) === '.') {
+            link = link.replace('.', '');
+        }
+        if (link.includes('tel')) {
+            links.splice(i, 1)
+        }
+        if (link.charAt(0) === '/') {
+
+            links.splice(i, 1, `http://localhost:${port}${link}`)
+        }
+    })
+    ;
+    return checkIfUnique(links);
+}
+
+export function findWithRegex(responses, map, regex) {
+
+    let array = [];
+    if (map) {
+        responses.map(response => {
+            // SEARCH WITH REGEX
+            let result;
+            result = regex.exec(response.data);
+
+            while (result) {
+                if (!array.includes(result[1])) {
+                    array.push(result[1]);
+                }
+                result = regex.exec(response.data);
+
+                if (result) {
+                    if (!array.includes(result[1])) {
+                        array.push(result[1]);
+                    }
+
+                }
+            }
+        })
+    } else {
+        // SEARCH WITH REGEX
+        let result;
+        result = regex.exec(responses);
+        while (result) {
+            result = regex.exec(responses);
+            if (result) {
+                if (!array.includes(result[1])) {
+                    array.push(result[1]);
+                }
+
+            }
+        }
+    }
+
+    return array;
+}
+
+export function checkIfUnique(array){
+    return array.filter((c, index) => {
+       return array.indexOf(c) === index;
+   });
+}
+
 
 
