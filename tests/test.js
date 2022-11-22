@@ -1,33 +1,50 @@
 import {test, chromium, expect} from '@playwright/test';
+import {exec} from "child_process";
 import https from "https"
-import {returnArrays, writeResultsToFile} from "./utils.js";
+import {checkIfUnique, findWithRegex, returnArrays, writeResultsToFile, port, replaceWithLocalhost} from "./utils.js";
 import requestImageSize from 'request-image-size';
 import axios from "axios";
 
-let sitemap = null;
+
+let sitemap = [];
 let imagesAndLinks = [];
+
 
 test.describe('Test links and images', () => {
 
     test.beforeEach(async ({page}) => {
-        // GET ALL ROUTES...
+        // exec('npm run preview')
         await chromium.launch();
+
         await page.goto('/sitemap.xml');
         sitemap = await page.content();
+        // GET ALL ROUTES...
+        // axios.get('http://localhost:4173/sitemap.xml')
+        //     .then(function (response) {
+        //         // handle success
+        //         sitemap = response;
+        //     })
+        //     .catch(function (error) {
+        //         // handle error
+        //         console.log(error);
+        //     })
         imagesAndLinks = await returnArrays(sitemap);
-    });
 
-    test("Test all links", async  () => {
+    })
+
+
+    test("Test all links", async () => {
 
         //TEST LINKS
         const test_results = [];
-
+        console.log(imagesAndLinks, 'images2')
         const linksAxiosGet = imagesAndLinks.all_links.map(link => axios.head(link, {
             httpsAgent: new https.Agent({
                 rejectUnauthorized: false
             }), // unauthorized sites allowed ?
             decompress: false // if no data available because the head request don`t try to decompress it
         }));
+
         const promisesResolved = linksAxiosGet.map(promise => promise.catch(error => ({error})));
 
         await axios.all(promisesResolved).then(axios.spread((...responses) => {
@@ -79,9 +96,78 @@ test.describe('Test links and images', () => {
             }
         }))
     })
+    // exec('npx kill-port 4173');
+});
+test.describe('UNIT tests', () => {
+    test("Test checkIfUnique function", async () => {
+        const array = ['1', '2', '1'];
+        const expectedArray = ['1', '2'];
+        console.log(checkIfUnique(array), 'array')
+        expect(checkIfUnique(array)).toEqual(expectedArray);
+    })
+    test("Find all client routes with regex ", async () => {
+        const regex = /<loc>(.*?)</gm;
+        const XMLContent = '<url><loc>https://programerski-klub.si//</loc></url> <url> <loc>https://programerski-klub.si//clani/danijelkorbar</loc></url>'
+        const expectedRegexCatch = ['https://programerski-klub.si//', 'https://programerski-klub.si//clani/danijelkorbar'];
+        expect(findWithRegex(XMLContent, false, regex)).toEqual(expectedRegexCatch);
+    })
+
+    test("Find all links in clinet routes with regex ", async () => {
+        const regex = /href\s*=\s*"(.*?)"/gms;
+
+        const XMLContent1 = {
+            data: '<link href="../_app/immutable/assets/Vizitka-1d278f3e.css" rel="stylesheet">'
+
+        }
+        const XMLContent2 = {
+            data: '<a href="https://github.com/danilojezernik" class="svelte-sj2pja">Git: danilojezernik</a>'
+        }
+
+        const XMLContent3 = {
+            data: '<a href    = " / content# " class="svelte-sj2pja">Content</a>'
+
+        }
+
+        const responses = [XMLContent1, XMLContent2, XMLContent3];
+        console.log(findWithRegex(responses, true, regex));
+        const expectedRegexCatch = ['../_app/immutable/assets/Vizitka-1d278f3e.css', 'https://github.com/danilojezernik', ' / content# '];
+        expect(findWithRegex(responses, true, regex)).toEqual(expectedRegexCatch);
+
+    })
+    test("Find all images from client routes with regex ", async () => {
+        const regex = /\b(?:href|src)\s*=\s*"\s*([^\s"].*(?:png|jpg|bmp))\s*"/gm;
+        const XMLContent1 = {
+            data: '<link href=" /favicon.png" rel="icon"/>'
+        }
+        const XMLContent2 = {
+            data: '<link src="/danijelkorbar .png" rel="icon"/>'
+        }
+        const XMLContent3 = {
+            data: '<link src = " / danijel korbar .bmp" rel="icon"/> '
+        }
+        const XMLContent4 = {
+            data: '<link src="/danijelkorbar.png" rel="icon"/>'
+        }
+        const XMLContent5 = {
+            data: '<link src="/danijelkorbar.jpg" rel="icon"/>'
+        }
+        const XMLContent6 = {
+            data: '<link href = " / danijel korbar .jpg" rel="icon"/>'
+        }
+
+        const responses = [XMLContent1, XMLContent2, XMLContent3, XMLContent4, XMLContent5, XMLContent6];
+        const expectedRegexCatch = ['/favicon.png', '/danijelkorbar .png', '/ danijel korbar .bmp', '/danijelkorbar.png', '/danijelkorbar.jpg','/ danijel korbar .jpg'];
+        expect(findWithRegex(responses, true, regex)).toEqual(expectedRegexCatch);
+    })
+
+    test("Parse all client route links", async () => {
+        const PORT = port
+        const routes = ['https://programerski-klub.si//clani/danilojeyernik', 'https://programerski-klub.si//clani/danijelkorbar'];
+        const exptectedArray = [`http://localhost:${PORT}/clani/danilojezernik`, `http://localhost:${PORT}/clani/danijelkorbar`];
+        expect(replaceWithLocalhost(routes)).toEqual(exptectedArray);
+    })
 
 })
-
 
 
 

@@ -4,14 +4,14 @@ import fs from "fs";
 let routesArray = [];
 let all_images = [];
 let array = [];
-const port = '4173';
+export const port = '4173';
 
 // GET ALL ROUTE LINKS AND IMAGES
 export async function returnArrays(sitemap) {
     routesArray = findAllRoutes(sitemap);
 
     await axios.all(routesArray.map(routes => axios.get(routes))).then(axios.spread((...responses) => {
-
+        console.log(responses[2])
         // FIND ALL IMAGES
         all_images = findAllImages(responses);
         // FIND ALL THE LINKS
@@ -23,14 +23,20 @@ export async function returnArrays(sitemap) {
 
 export const findAllRoutes = (sitemap) => {
     //FIND ALL ROUTES
+
     const regex = /<loc>(.*)</gm;
     const routes = findWithRegex(sitemap, false, regex);
-    // GET ALL CLIENT ROUTES...
-    routes.map((route, i) => {
-        routesArray[i] = route.replace('https://programerski-klub.si//', `http://localhost:${port}/`)
+
+    return replaceWithLocalhost(routes)
+}
+export function replaceWithLocalhost(routes){
+    const replacedArray = [];
+    routes.map(route => {
+        route = route.replace('https://programerski-klub.si//', `http://localhost:${port}/`)
+        replacedArray.push(route);
     });
 
-    return routesArray
+    return replacedArray;
 }
 
 export function findAllImages(responses) {
@@ -109,6 +115,9 @@ export function findWithRegex(responses, map, regex) {
         let result;
         result = regex.exec(responses);
         while (result) {
+            if (!array.includes(result[1])) {
+                array.push(result[1]);
+            }
             result = regex.exec(responses);
             if (result) {
                 if (!array.includes(result[1])) {
@@ -118,14 +127,15 @@ export function findWithRegex(responses, map, regex) {
             }
         }
     }
-
     return array;
 }
 
 export function checkIfUnique(array){
-    return array.filter((c, index) => {
-       return array.indexOf(c) === index;
-   });
+    const uniqueArray = array.filter((c, index) => {
+        return array.indexOf(c) === index;
+    });
+
+    return uniqueArray;
 }
 
 
