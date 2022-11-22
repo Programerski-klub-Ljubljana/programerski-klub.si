@@ -11,7 +11,7 @@ export async function returnArrays(sitemap) {
     routesArray = findAllRoutes(sitemap);
 
     await axios.all(routesArray.map(routes => axios.get(routes))).then(axios.spread((...responses) => {
-        console.log(responses[2])
+
         // FIND ALL IMAGES
         all_images = findAllImages(responses);
         // FIND ALL THE LINKS
@@ -41,9 +41,9 @@ export function replaceWithLocalhost(routes){
 
 export function findAllImages(responses) {
 
-    const regex = /\b(?:href|src)="([^\s"]*\.(?:png|jpg|bmp))"/gm;
-    const neki = findWithRegex(responses, true, regex);
-    return parse(neki);
+    const regex = /\b(?:href|src)\s*=\s*"\s*([^\s"].*\.(?:png|jpg|bmp))\s*"/gm;
+    const find = findWithRegex(responses, true, regex)
+    return parse(find);
 }
 
 export function findAllLinks(responses) {
@@ -51,7 +51,6 @@ export function findAllLinks(responses) {
     const regex = /href\s*=\s*"(.*?)"/gms;
     // FIND ALL LINKS
     let all_links = findWithRegex(responses, true, regex);
-
     return parse(all_links);
 }
 
@@ -70,8 +69,9 @@ export function writeResultsToFile(test_results, name) {
 }
 
 export function parse(links) {
+    const regex = /[../]+/;
     links.map((link, i) => {
-        link = link.replace('..', '');
+        link = link.replace(regex, '/');
         if (link.charAt(0) === '.') {
             link = link.replace('.', '');
         }
@@ -82,8 +82,7 @@ export function parse(links) {
 
             links.splice(i, 1, `http://localhost:${port}${link}`)
         }
-    })
-    ;
+    });
     return checkIfUnique(links);
 }
 
@@ -127,6 +126,7 @@ export function findWithRegex(responses, map, regex) {
             }
         }
     }
+    console.log(array)
     return array;
 }
 

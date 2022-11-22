@@ -1,7 +1,15 @@
 import {test, chromium, expect} from '@playwright/test';
 import {exec} from "child_process";
 import https from "https"
-import {checkIfUnique, findWithRegex, returnArrays, writeResultsToFile, port, replaceWithLocalhost} from "./utils.js";
+import {
+    checkIfUnique,
+    findWithRegex,
+    returnArrays,
+    writeResultsToFile,
+    port,
+    replaceWithLocalhost,
+    parse
+} from "./utils.js";
 import requestImageSize from 'request-image-size';
 import axios from "axios";
 
@@ -37,7 +45,6 @@ test.describe('Test links and images', () => {
 
         //TEST LINKS
         const test_results = [];
-        console.log(imagesAndLinks, 'images2')
         const linksAxiosGet = imagesAndLinks.all_links.map(link => axios.head(link, {
             httpsAgent: new https.Agent({
                 rejectUnauthorized: false
@@ -96,13 +103,12 @@ test.describe('Test links and images', () => {
             }
         }))
     })
-    // exec('npx kill-port 4173');
+    //exec('npx kill-port 4173');
 });
 test.describe('UNIT tests', () => {
     test("Test checkIfUnique function", async () => {
         const array = ['1', '2', '1'];
         const expectedArray = ['1', '2'];
-        console.log(checkIfUnique(array), 'array')
         expect(checkIfUnique(array)).toEqual(expectedArray);
     })
     test("Find all client routes with regex ", async () => {
@@ -129,7 +135,6 @@ test.describe('UNIT tests', () => {
         }
 
         const responses = [XMLContent1, XMLContent2, XMLContent3];
-        console.log(findWithRegex(responses, true, regex));
         const expectedRegexCatch = ['../_app/immutable/assets/Vizitka-1d278f3e.css', 'https://github.com/danilojezernik', ' / content# '];
         expect(findWithRegex(responses, true, regex)).toEqual(expectedRegexCatch);
 
@@ -156,15 +161,43 @@ test.describe('UNIT tests', () => {
         }
 
         const responses = [XMLContent1, XMLContent2, XMLContent3, XMLContent4, XMLContent5, XMLContent6];
-        const expectedRegexCatch = ['/favicon.png', '/danijelkorbar .png', '/ danijel korbar .bmp', '/danijelkorbar.png', '/danijelkorbar.jpg','/ danijel korbar .jpg'];
+        const expectedRegexCatch = [
+            '/favicon.png',
+            '/danijelkorbar .png',
+            '/ danijel korbar .bmp',
+            '/danijelkorbar.png',
+            '/danijelkorbar.jpg',
+            '/ danijel korbar .jpg'];
         expect(findWithRegex(responses, true, regex)).toEqual(expectedRegexCatch);
     })
 
-    test("Parse all client route links", async () => {
+    test("Parse all client routes", async () => {
         const PORT = port
-        const routes = ['https://programerski-klub.si//clani/danilojeyernik', 'https://programerski-klub.si//clani/danijelkorbar'];
-        const exptectedArray = [`http://localhost:${PORT}/clani/danilojezernik`, `http://localhost:${PORT}/clani/danijelkorbar`];
+        const routes = [
+            'https://programerski-klub.si//clani/danilojezernik',
+            'https://programerski-klub.si//clani/danijelkorbar'];
+        const exptectedArray = [
+            `http://localhost:${PORT}/clani/danilojezernik`,
+            `http://localhost:${PORT}/clani/danijelkorbar`];
         expect(replaceWithLocalhost(routes)).toEqual(exptectedArray);
+    })
+    test("Parse all links from client routes page", async () => {
+        const PORT = port
+        const links = [
+            './_app/immutable/assets/_page-e5f94684de.css',
+            '../_app/immutable/assets/_page-e5f94684.css',
+            'https://github.com/Programerski-klub-Ljubljana',
+            '../../_app/immutable/assets/_page-090371f3.css',
+            '/igre/racer#content'
+        ];
+        const exptectedArray = [
+            `http://localhost:${PORT}/_app/immutable/assets/_page-e5f94684de.css`,
+            `http://localhost:${PORT}/_app/immutable/assets/_page-e5f94684.css`,
+            'https://github.com/Programerski-klub-Ljubljana',
+            `http://localhost:${PORT}/_app/immutable/assets/_page-090371f3.css`,
+            `http://localhost:${PORT}/igre/racer#content`
+        ];
+        expect(parse(links)).toEqual(exptectedArray);
     })
 
 })
