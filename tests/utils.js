@@ -5,6 +5,7 @@ import https from "https"
 import axios from "axios";
 import requestImageSize from "request-image-size";
 
+
 // ALL ARRAYS
 let routesArray = [];
 let all_images = [];
@@ -50,12 +51,20 @@ export async function getAllLinkResponses(all_links) {
     const promisesResolved = linksAxiosGet.map(promise => promise.catch(error => ({error})));
     return await axios.all(promisesResolved).then(axios.spread((...responses) => {
         responses.map((response) => {
-            if (response.status !== 200) {
-                test_results.push(response.error.code + ' at ' + response.error.config.url + '----------------test failed-----------------');
-                console.log(response.error.code + ' at ' + response.error.config.url);
+            // IF THERE IS AN EMPTY HREF
+            if (response.status !== 200 && response.error.code === 'ERR_INVALID_URL') {
+                test_results.push(response.error.code + '/ FOUND AN EMPTY TAG '+ '----------------test failed-----------------');
+                console.log('found an empty tag')
             } else {
-                test_results.push('successful links status test at: ' + response.config.url);
+                // IF THERE IS AN 404 ERROR, BAD REQUEST
+                if (response.status !== 200) {
+                    test_results.push(response.error.code + ' at ' + response.error.config.url + '----------------test failed-----------------');
+                    console.log(response.error.code + ' at ' + response.error.config.url);
+                } else {
+                    test_results.push('successful links status test at: ' + response.config.url);
+                }
             }
+
         })
 
         // WRITE TEST RESULTS TO .JSON FILE
@@ -77,6 +86,7 @@ export async function getAllImageResponses(all_images) {
     await axios.all(promisesResolved).then(axios.spread((...responses) => {
         responses.map((response) => {
             if (response.status !== 200) {
+
                 test_results.push(response.error.code + ' at ' + response.error.config.url + '--------------test failed--------------')
                 console.log(response.error.code + ' at ' + response.error.config.url);
             } else {
@@ -131,6 +141,7 @@ export function findAllLinks(responses) {
 
     // FIND ALL LINKS
     let all_links = findWithRegex(responses, true, linksRegex);
+
     return parse(all_links);
 }
 
