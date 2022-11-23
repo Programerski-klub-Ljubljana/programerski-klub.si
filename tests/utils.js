@@ -1,18 +1,23 @@
-import axios from 'axios';
 import fs from "fs";
 // playwright.config.ts
 import PlaywrightConfig from "../playwright.config.js";
+import https from "https"
+import axios from "axios";
+import requestImageSize from "request-image-size";
 
+// ALL ARRAYS
 let routesArray = [];
 let all_images = [];
 let all_links = [];
 let all_emptystrings = [];
+
 // ALL REGEX-es
 export const routesRegex = /<loc>(.*?)</gm;
 export const linksRegex = /href\s*=\s*"(.*?)"/gms;
 export const imagesRegex = /\b(?:href|src)\s*=\s*"\s*([^"]*(?:\.png|\.jpg|\.bmp|\.jpeg|\.gif))\s*"/gm;
 export const emptySRCHREFregex = /\b(?:href|src)\s*=\s*"\s*([^"]*)\s*"/gm;
 
+// IMPORT PORT FROM PLAYWRIGHT.CONFIG
 export const port = PlaywrightConfig.webServer.port;
 
 // GET ALL ROUTE LINKS AND IMAGES
@@ -21,16 +26,81 @@ export async function returnArrays(sitemap) {
 
     await axios.all(routesArray.map(routes => axios.get(routes))).then(axios.spread((...responses) => {
 
-        // FIND ALL IMAGES
+        // FIND ALL IMAGES WITH REGEX
         all_images = findAllImages(responses);
-        // FIND ALL THE LINKS
+        // FIND ALL THE LINKS WITH REGEX
         all_links = findAllLinks(responses);
-        //FIND ALL EMPTY SRC AND HREF STRINGS
+        //FIND ALL EMPTY SRC AND HREF STRINGS WITH REGEX
         all_emptystrings = findEmptySRCandHREF(responses);
 
-
     }));
-    return { all_links, all_images, all_emptystrings};
+    return {all_links, all_images, all_emptystrings};
+}
+
+export async function getAllLinkResponses(all_links) {
+    const test_results = [];
+
+    const linksAxiosGet = all_links.map(link => axios.head(link, {
+        httpsAgent: new https.Agent({
+            rejectUnauthorized: false
+        }), // unauthorized sites allowed ?
+        decompress: false // if no data available because the head request don`t try to decompress it
+    }));
+
+    const promisesResolved = linksAxiosGet.map(promise => promise.catch(error => ({error})));
+    return await axios.all(promisesResolved).then(axios.spread((...responses) => {
+        responses.map((response) => {
+            if (response.status !== 200) {
+                test_results.push(response.error.code + ' at ' + response.error.config.url + '----------------test failed-----------------');
+                console.log(response.error.code + ' at ' + response.error.config.url);
+            } else {
+                test_results.push('successful links status test at: ' + response.config.url);
+            }
+        })
+
+        // WRITE TEST RESULTS TO .JSON FILE
+        writeResultsToFile(test_results, 'linksTestRun');
+        return responses;
+
+    }))
+}
+
+export async function getAllImageResponses(all_images) {
+    const test_results = [];
+    const promise1 = [];
+    const linksAxiosGet = all_images.map(link => axios.head(link));
+    const RIS = all_images.map(link => requestImageSize(link));
+    // catch all errors on promises
+    const promisesResolved = linksAxiosGet.map(promise => promise.catch((error) => ({error})));
+    const promisesResolved2 = RIS.map(promise => promise.catch((error) => ({error})));
+
+    await axios.all(promisesResolved).then(axios.spread((...responses) => {
+        responses.map((response) => {
+            if (response.status !== 200) {
+                test_results.push(response.error.code + ' at ' + response.error.config.url + '--------------test failed--------------')
+                console.log(response.error.code + ' at ' + response.error.config.url);
+            } else {
+                test_results.push('successful image status test at:' + response.config.url);
+            }
+            promise1.push(response);
+        })
+        // WRITE TEST RESULTS TO .JSON FILE
+        writeResultsToFile(test_results, 'imageTestRun');
+    }))
+
+    return {promise1, promisesResolved2}
+
+}
+
+export function checkForURLlength(responses) {
+    const test_result = [];
+    if (responses.URL.lenght !== 0) {
+        responses.URL.map(url => {
+            console.log('found empty tag in: ' + responses.URL);
+            test_result.push('found empty tag in: ' + url);
+        })
+        writeResultsToFile(test_result, 'findEmptyTags');
+    }
 }
 
 export const findAllRoutes = (sitemap) => {
