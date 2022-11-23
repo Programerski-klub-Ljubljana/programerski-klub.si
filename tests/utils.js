@@ -1,10 +1,19 @@
 import axios from 'axios';
 import fs from "fs";
+// playwright.config.ts
+import PlaywrightConfig from "../playwright.config.js";
 
 let routesArray = [];
 let all_images = [];
-let array = [];
-export const port = '4173';
+let all_links = [];
+let all_emptystrings = [];
+// ALL REGEX-es
+export const routesRegex = /<loc>(.*?)</gm;
+export const linksRegex = /href\s*=\s*"(.*?)"/gms;
+export const imagesRegex = /\b(?:href|src)\s*=\s*"\s*([^"]*(?:\.png|\.jpg|\.bmp|\.jpeg|\.gif))\s*"/gm;
+export const emptySRCHREFregex = /\b(?:href|src)\s*=\s*"\s*([^"]*)\s*"/gm;
+
+export const port = PlaywrightConfig.webServer.port;
 
 // GET ALL ROUTE LINKS AND IMAGES
 export async function returnArrays(sitemap) {
@@ -15,21 +24,24 @@ export async function returnArrays(sitemap) {
         // FIND ALL IMAGES
         all_images = findAllImages(responses);
         // FIND ALL THE LINKS
-        array = findAllLinks(responses);
+        all_links = findAllLinks(responses);
+        //FIND ALL EMPTY SRC AND HREF STRINGS
+        all_emptystrings = findEmptySRCandHREF(responses);
+
 
     }));
-    return {all_links: array, all_images};
+    return { all_links, all_images, all_emptystrings};
 }
 
 export const findAllRoutes = (sitemap) => {
     //FIND ALL ROUTES
 
-    const regex = /<loc>(.*)</gm;
-    const routes = findWithRegex(sitemap, false, regex);
+    const routes = findWithRegex(sitemap, false, routesRegex);
 
     return replaceWithLocalhost(routes)
 }
-export function replaceWithLocalhost(routes){
+
+export function replaceWithLocalhost(routes) {
     const replacedArray = [];
     routes.map(route => {
         route = route.replace('https://programerski-klub.si//', `http://localhost:${port}/`)
@@ -41,17 +53,37 @@ export function replaceWithLocalhost(routes){
 
 export function findAllImages(responses) {
 
-    const regex = /\b(?:href|src)\s*=\s*"\s*([^\s"].*\.(?:png|jpg|bmp))\s*"/gm;
-    const find = findWithRegex(responses, true, regex)
+    const find = findWithRegex(responses, true, imagesRegex)
     return parse(find);
 }
 
 export function findAllLinks(responses) {
 
-    const regex = /href\s*=\s*"(.*?)"/gms;
     // FIND ALL LINKS
-    let all_links = findWithRegex(responses, true, regex);
+    let all_links = findWithRegex(responses, true, linksRegex);
     return parse(all_links);
+}
+
+export function findEmptySRCandHREF(responses) {
+    //FIND ALL EMPTY SRC AND HREF STRINGS
+    const URL = [];
+    let i = 0;
+
+    responses.map(response => {
+        // SEARCH WITH REGEX
+        let result;
+        result = emptySRCHREFregex.exec(response.data);
+        while (result) {
+            const trim = result[1].trim();
+            if (trim.length === 0) {
+                URL.push(response.config.url);
+                i++;
+            }
+            result = emptySRCHREFregex.exec(response.data);
+        }
+
+    })
+    return {i, URL};
 }
 
 export function writeResultsToFile(test_results, name) {
@@ -87,7 +119,6 @@ export function parse(links) {
 }
 
 export function findWithRegex(responses, map, regex) {
-
     let array = [];
     if (map) {
         responses.map(response => {
@@ -126,11 +157,11 @@ export function findWithRegex(responses, map, regex) {
             }
         }
     }
-    console.log(array)
+
     return array;
 }
 
-export function checkIfUnique(array){
+export function checkIfUnique(array) {
     const uniqueArray = array.filter((c, index) => {
         return array.indexOf(c) === index;
     });
