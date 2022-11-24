@@ -1,29 +1,27 @@
-import fs from "fs";
-// playwright.config.ts
 import PlaywrightConfig from "../playwright.config.js";
-import https from "https"
-import axios from "axios";
 import requestImageSize from "request-image-size";
+import axios from "axios";
+import https from "https";
+import fs from "fs";
 
-
-// ALL ARRAYS
+let all_emptystrings = [];
 let routesArray = [];
 let all_images = [];
 let all_links = [];
-let all_emptystrings = [];
 
 // ALL REGEX-es
-export const routesRegex = /<loc>(.*?)</gm;
-export const linksRegex = /href\s*=\s*"(.*?)"/gms;
 export const imagesRegex = /\b(?:href|src)\s*=\s*"\s*([^"]*(?:\.png|\.jpg|\.bmp|\.jpeg|\.gif))\s*"/gm;
 export const emptySRCHREFregex = /\b(?:href|src)\s*=\s*"\s*([^"]*)\s*"/gm;
+export const linksRegex = /href\s*=\s*"(.*?)"/gms;
+export const routesRegex = /<loc>(.*?)</gm;
 
 // IMPORT PORT FROM PLAYWRIGHT.CONFIG
 export const port = PlaywrightConfig.webServer.port;
 
 // GET ALL ROUTE LINKS AND IMAGES
-export async function returnArrays(sitemap) {
-    routesArray = findAllRoutes(sitemap);
+export async function returnArrays() {
+    // GET ALL SITEMAP URLs
+    routesArray = findAllRoutes(await getSitemapURLS());
 
     await axios.all(routesArray.map(routes => axios.get(routes))).then(axios.spread((...responses) => {
 
@@ -37,6 +35,17 @@ export async function returnArrays(sitemap) {
     }));
     return {all_links, all_images, all_emptystrings};
 }
+export async function getSitemapURLS(){
+    let sitemap = [];
+    await axios.get(`http://localhost:${port}/sitemap.xml`)
+        .then(response => {
+            sitemap = response.data;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    return sitemap;
+}
 
 export async function getAllLinkResponses(all_links) {
     const test_results = [];
@@ -44,7 +53,7 @@ export async function getAllLinkResponses(all_links) {
     const linksAxiosGet = all_links.map(link => axios.head(link, {
         httpsAgent: new https.Agent({
             rejectUnauthorized: false
-        }), // unauthorized sites allowed ?
+        }),
         decompress: false // if no data available because the head request don`t try to decompress it
     }));
 
@@ -53,7 +62,7 @@ export async function getAllLinkResponses(all_links) {
         responses.map((response) => {
             // IF THERE IS AN EMPTY HREF
             if (response.status !== 200 && response.error.code === 'ERR_INVALID_URL') {
-                test_results.push(response.error.code + '/ FOUND AN EMPTY TAG '+ '----------------test failed-----------------');
+                test_results.push(response.error.code + '/ FOUND AN EMPTY TAG ' + '----------------test failed-----------------');
                 console.log('found an empty tag')
             } else {
                 // IF THERE IS AN 404 ERROR, BAD REQUEST
@@ -66,7 +75,6 @@ export async function getAllLinkResponses(all_links) {
             }
 
         })
-
         // WRITE TEST RESULTS TO .JSON FILE
         writeResultsToFile(test_results, 'linksTestRun');
         return responses;
@@ -104,7 +112,8 @@ export async function getAllImageResponses(all_images) {
 
 export function checkForURLlength(responses) {
     const test_result = [];
-    if (responses.URL.lenght !== 0) {
+    // IF URL LENGTH > 0 , FOUND AN EMPTY HREF OR SRC
+    if (responses.URL.length !== 0) {
         responses.URL.map(url => {
             console.log('found empty tag in: ' + responses.URL);
             test_result.push('found empty tag in: ' + url);
@@ -115,7 +124,6 @@ export function checkForURLlength(responses) {
 
 export const findAllRoutes = (sitemap) => {
     //FIND ALL ROUTES
-
     const routes = findWithRegex(sitemap, false, routesRegex);
 
     return replaceWithLocalhost(routes)
