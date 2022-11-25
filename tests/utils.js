@@ -1,7 +1,7 @@
 import requestImageSize from 'request-image-size';
 import axios from 'axios';
 import https from 'https';
-import fs from 'fs';
+import size from 'http-image-size';
 
 let emptyStrings = [];
 let sitemapRoutes = [];
@@ -20,7 +20,9 @@ export const localHost = `http://localhost:${port}`;
 
 // TODO: Ne potrebujes
 export function checkIfUnique(array) {
-  const uniqueArray = array.filter((c, index) => array.indexOf(c) === index);
+  const uniqueArray = array.filter((c, index) => {
+    return array.indexOf(c) === index;
+  });
 
   return uniqueArray;
 }
@@ -55,72 +57,42 @@ export async function getAllLinkResponses(allLinks) {
   };
   const linksAxiosGet = allLinks.map((link) => axios.head(link, config));
   const promisesResolved = linksAxiosGet.map((promise) => promise.catch((error) => ({ error })));
-  // eslint-disable-next-line max-len,no-return-await
-  return await axios.all(promisesResolved).then(axios.spread((...responses) => responses.map((response) => response)));
+
+  return axios.all(promisesResolved)
+    .then(axios.spread((...responses) => responses.map((response) => response)));
 }
 
 export async function getAllImageResponses(allImages) {
-  const RIS = allImages.map((link) => requestImageSize(link));
-  return RIS.map((promise) => promise.catch((error) => ({ error })));
+  return size('http://localhost:5173/favicon.png', async (err, dimensions) => dimensions);
 }
 
-// TODO: Namesto responses daj notri datas, preden das podatke notri jih
-//  standardiziraj v standardno obliko
-// TODO: ki jo funckija podpira. (trenutno je koda duplicirna)
-export function findWithRegex(responses, map, regex) {
+export function findWithRegex(responses, regex) {
   const array = [];
-  if (map) {
-    responses.map((response) => {
-      // SEARCH WITH REGEX
-      let result;
-      result = regex.exec(response.data);
-
-      while (result) {
-        if (!array.includes(result[1])) {
-          array.push(result[1]);
-        }
-        result = regex.exec(response.data);
-
-        if (result) {
-          if (!array.includes(result[1])) {
-            array.push(result[1]);
-          }
-        }
-      }
-      return null;
-    });
-  } else {
-    // SEARCH WITH REGEX
-    let result;
+  // SEARCH WITH REGEX
+  let result;
+  result = regex.exec(responses);
+  while (result) {
+    if (!array.includes(result[1])) {
+      array.push(result[1]);
+    }
     result = regex.exec(responses);
-    while (result) {
+    if (result) {
       if (!array.includes(result[1])) {
         array.push(result[1]);
       }
-      result = regex.exec(responses);
-      if (result) {
-        if (!array.includes(result[1])) {
-          array.push(result[1]);
-        }
-      }
     }
   }
-
   return array;
 }
 
-// TODO: One time useage warning
-export function findAllImages(responses) {
-  const find = findWithRegex(responses, true, imagesRegex);
-  return parse(find);
-}
-
-// TODO: One time useage warning
-export function findAllLinks(responses) {
-  // FIND ALL LINKS
-  const findLinks = findWithRegex(responses, true, linksRegex);
-
-  return parse(findLinks);
+export function fromArrayToString(responses) {
+  // GET ALL DATA FROM RESPONSES SAVE IN ARRAY AND CONVERT TO STRING
+  const data = [];
+  responses.map((response) => {
+    data.push(response.data);
+    return null;
+  });
+  return data;
 }
 
 // TODO: Config
@@ -136,7 +108,7 @@ export async function getSitemapURLS() {
   return sitemap;
 }
 
-// TODO: One time useage warning
+// TODO: One time usage warning
 export function replaceWithLocalhost(routes) {
   const replacedArray = [];
   routes.map((route) => {
@@ -147,20 +119,11 @@ export function replaceWithLocalhost(routes) {
   return replacedArray;
 }
 
-// TODO: One time useage warning
-export const findAllRoutes = (sitemap) => {
-  // FIND ALL ROUTES
-  const routes = findWithRegex(sitemap, false, routesRegex);
-
-  return replaceWithLocalhost(routes);
-};
-
+// --------------------------------------------------------------------
 // TODO: Standardna oblika argsa, returna
 export function findEmptySRCandHREF(responses) {
   // FIND ALL EMPTY SRC AND HREF STRINGS
   const URL = [];
-  let i = 0;
-
   responses.map((response) => {
     // SEARCH WITH REGEX
     let result;
@@ -169,19 +132,19 @@ export function findEmptySRCandHREF(responses) {
       const trim = result[1].trim();
       if (trim.length === 0) {
         URL.push(response.config.url);
-        i += 1;
       }
       result = emptySRCHREFregex.exec(response.data);
     }
     return null;
   });
-  return { i, URL };
+  return URL;
 }
 
 // GET ALL ROUTE LINKS AND IMAGES
 export async function returnArrays() {
   // GET ALL SITEMAP URLs
-  sitemapRoutes = findAllRoutes(await getSitemapURLS());
+
+  sitemapRoutes = replaceWithLocalhost(findWithRegex(await getSitemapURLS(), routesRegex));
   // TODO: Links for non image
   await axios.all(sitemapRoutes.map((routes) => axios.get(routes)))
     .then(axios.spread((...responses) => {
@@ -190,39 +153,24 @@ export async function returnArrays() {
       // TODO: Call easy functions that get only basic types.
       // TODO: Base on the return value you eather console log error or pass.
       // FIND ALL IMAGES WITH REGEX
-      images = findAllImages(responses);
+      images = parse(findWithRegex(fromArrayToString(responses), imagesRegex));
       // FIND ALL THE LINKS WITH REGEX
-      links = findAllLinks(responses);
+      links = parse(findWithRegex(fromArrayToString(responses), linksRegex));
+      // links = findAllLinks(responses);
       // FIND ALL EMPTY SRC AND HREF STRINGS WITH REGEX
       emptyStrings = findEmptySRCandHREF(responses);
     }));
   return { links, images, emptyStrings };
 }
 
-// WARNING: !!!
-export function writeResultsToFile(testResults, name) {
-  fs.writeFile(
-    `tests/${name}.json`,
-
-    JSON.stringify(testResults, null, 1),
-
-    (err) => {
-      if (err) {
-        console.error('Error writing file');
-      }
-    },
-  );
-}
-
 export function checkForURLlength(responses) {
-  const testResults = [];
   // IF URL LENGTH > 0 , FOUND AN EMPTY HREF OR SRC
-  if (responses.URL.length !== 0) {
-    responses.URL.map((url) => {
-      console.log(`found empty tag in: ${responses.URL}`);
-      testResults.push(`found empty tag in: ${url}`);
+  if (responses.length !== 0) {
+    responses.map((response) => {
+      console.log(`found empty tag in: ${response}`);
       return null;
     });
-    writeResultsToFile(testResults, 'findEmptyTags');
+  } else {
+    console.log('No empty href or src tags found!');
   }
 }
