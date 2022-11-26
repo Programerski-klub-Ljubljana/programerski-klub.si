@@ -13,6 +13,7 @@ export const linksRegex = /href\s*=\s*"(.*?)"/gms;
 export const routesRegex = /<loc>(.*?)</gm;
 
 export const port = '5173';
+export const url = 'https://programerski-klub.si//';
 export const localHost = `http://localhost:${port}/`;
 console.log(`testing at ${localHost}`);
 
@@ -101,7 +102,7 @@ export async function getSitemapURLS() {
 export function replaceWithLocalhost(routes) {
   const replacedArray = [];
   routes.map((route) => {
-    const replace = route.replace('https://programerski-klub.si//', localHost);
+    const replace = route.replace(url, localHost);
     replacedArray.push(replace);
     return null;
   });
@@ -132,7 +133,6 @@ export function findEmptySRCandHREF(responses, regex) {
 // GET ALL ROUTE LINKS AND IMAGES
 export async function returnArrays() {
   // GET ALL SITEMAP URLs
-
   sitemapRoutes = replaceWithLocalhost(findWithRegex(await getSitemapURLS(), routesRegex));
   await axios.all(sitemapRoutes.map((routes) => axios.get(routes)))
     .then(axios.spread((...responses) => {

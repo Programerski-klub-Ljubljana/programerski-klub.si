@@ -14,17 +14,17 @@ import {
   getAllLinkResponses,
   getAllImageResponses,
   checkForURLlength,
-  fromArrayToString, localHost, emptyStringsRegex
+  fromArrayToString, localHost, emptyStringsRegex, url
 } from './utils.js';
 
 let imagesAndLinks = [];
-describe('Test images', () => {
+describe('Test images and links', () => {
 
   beforeEach(async () => {
     imagesAndLinks = await returnArrays();
   });
 
-  it('Test all links', async () => {
+  it('Should test all links', async () => {
 
     const responses = await getAllLinkResponses(imagesAndLinks.links);
 
@@ -55,7 +55,7 @@ describe('Test images', () => {
       }
     }
   })
-  it("For empty src and href strings", () => {
+  it("Should test for empty src and href strings", () => {
 
     const responses = imagesAndLinks.emptyStrings;
     // CHECK IF RESPONSE URLS ARRAY IS NOT EMPTY , LOG AND WRITE TEST RESULTS FO FILE
@@ -65,18 +65,18 @@ describe('Test images', () => {
   });
 });
 describe('UNIT tests', () => {
-  it("if array items are not duplicates", () => {
+  it("Should test if array items are not duplicates", () => {
     const array = ['/content#', '/src/image.jpg', '/content#'];
     const expectedArray = ['/content#', '/src/image.jpg'];
     assert.deepEqual(checkIfUnique(array), expectedArray);
   })
-  it("all client routes with regex ", async () => {
+  it("Should test all client routes with regex ", async () => {
     const XMLContent = '<url><loc>https://programerski-klub.si//</loc></url> <url> <loc>https://programerski-klub.si//clani/danijelkorbar</loc></url>'
-    const expectedRegexCatch = ['https://programerski-klub.si//', 'https://programerski-klub.si//clani/danijelkorbar'];
+    const expectedRegexCatch = [url, `${url}clani/danijelkorbar`];
     assert.deepEqual(findWithRegex(XMLContent, routesRegex), expectedRegexCatch);
   })
 
-  it("all links in client routes with regex ", () => {
+  it("Should test all links in client routes with regex ", () => {
     const XMLContent1 = {
       data:
         '<link href="../_app/immutable/assets/Vizitka-1d278f3e.css" rel="stylesheet">' +
@@ -90,7 +90,7 @@ describe('UNIT tests', () => {
     assert.deepEqual(findWithRegex(fromArrayToString(responses), linksRegex), expectedRegexCatch);
 
   })
-  it("all images from client routes with regex ", () => {
+  it("Should test all images from client routes with regex ", () => {
     const XMLContent1 = {
       data:
         '<img rel="icon" src="/danijelKorbar.png" alt="">' +
@@ -119,7 +119,7 @@ describe('UNIT tests', () => {
     assert.deepEqual(findWithRegex(fromArrayToString(responses), imagesRegex), expectedRegexCatch);
   })
 
-  it("parsing of all links from client routes page", () => {
+  it("Should test parsing of all links from client routes page", () => {
     const links = [
       '/games/racer#content',
       './_app/immutable/assets/_page-e5f94684de.css',
@@ -138,16 +138,16 @@ describe('UNIT tests', () => {
     parse(links)
     assert.deepEqual(parse(links),expectedArray);
   })
-  it("parsing of all client routes", () => {
+  it("Should test parsing of all client routes", () => {
     const routes = [
-      'https://programerski-klub.si//clani/danilojezernik',
-      'https://programerski-klub.si//clani/danijelkorbar'];
+      `${url}clani/danilojezernik`,
+      `${url}clani/danijelkorbar`];
     const exptectedArray = [
       `${localHost}clani/danilojezernik`,
       `${localHost}clani/danijelkorbar`];
     assert.deepEqual(replaceWithLocalhost(routes), exptectedArray);
   })
-  it("for empty src and href strings", () => {
+  it("Should test for empty src and href strings", () => {
 
     const XMLContent1 = {
       data:
