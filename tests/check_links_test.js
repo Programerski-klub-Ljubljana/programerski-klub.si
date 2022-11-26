@@ -1,5 +1,5 @@
-import { expect } from 'chai';
-/* eslint-disable */
+import {assert} from 'chai';
+import requestImageSize from 'request-image-size';
 import {
   checkIfUnique,
   findWithRegex,
@@ -14,13 +14,11 @@ import {
   getAllLinkResponses,
   getAllImageResponses,
   checkForURLlength,
-  fromArrayToString
+  fromArrayToString, localHost, emptyStringsRegex
 } from './utils.js';
-import {log} from "three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements.js";
-/* eslint-enable */
+
 let imagesAndLinks = [];
-// GET ALL THE LINKS AND IMAGES FROM SITEMAP URLs
-describe('Test links and images', () => {
+describe('Test images', () => {
 
   beforeEach(async () => {
     imagesAndLinks = await returnArrays();
@@ -30,55 +28,55 @@ describe('Test links and images', () => {
 
     const responses = await getAllLinkResponses(imagesAndLinks.links);
 
+    let i = 0;
      responses.map((response) => {
-      expect(response.status).to.equal(200);
+       try {
+         assert.equal(response.status,200, 'height must be greater than zero');
+         i += 1;
+       } catch(err) {
+         assert.isOk(false, response.error.code + ' at: ' + imagesAndLinks.links[i]);
+         i += 1;
+       }
     });
   });
 
-  // it('Test all images', async () => {
-  //   const responses = await getAllImageResponses(imagesAndLinks.images);
-  //   console.log(responses)
-  //
-  //   // TEST ALL IMAGE RESPONSE STATUSES
-  //   // responses.promise1.map(res => {
-  //   //   expect.soft(res.status).toBe(200);
-  //   // })
-  //   // TEST ALL IMAGE SIZES
-  //   // responses.promisesResolved2.map((promise, i) => promise.then((images => {
-  //   //   if (images.error) {
-  //   //     console.log(images.error + ' image size error at: ' + imagesAndLinks.all_images[i]);
-  //   //     expect.soft(images.height > 0 && images.width > 0).toBe(true);
-  //   //   } else {
-  //   //     expect.soft(images.height > 0 && images.width > 0).toBe(true);
-  //   //   }
-  //   // })));
-  //
-  // })
-  it("For empty src and href strings", async () => {
+  it('Should test all image sizes', async () => {
+
+    const imagesResonses = await getAllImageResponses(imagesAndLinks.images)
+    let i = 0;
+    for (const image of imagesResonses) {
+      const res = await image
+      try {
+        assert(res.height > 0, 'height must be greater than zero');
+        i += 1;
+      } catch(err) {
+        assert.isOk(false, res.error + ' at: ' + imagesAndLinks.images[i] );
+        i += 1;
+      }
+    }
+  })
+  it("For empty src and href strings", () => {
 
     const responses = imagesAndLinks.emptyStrings;
     // CHECK IF RESPONSE URLS ARRAY IS NOT EMPTY , LOG AND WRITE TEST RESULTS FO FILE
     checkForURLlength(responses)
-
     // BOTH MUST EQUAL TO 0 IF NO EMPTY TAGS WERE FOUND
-    expect(responses.length).to.eql(0);
+    assert.equal(responses.length, 0);
   });
 });
 describe('UNIT tests', () => {
-  it("if array items are not duplicates", async () => {
+  it("if array items are not duplicates", () => {
     const array = ['/content#', '/src/image.jpg', '/content#'];
     const expectedArray = ['/content#', '/src/image.jpg'];
-    expect(checkIfUnique(array)).to.eql(expectedArray);
+    assert.deepEqual(checkIfUnique(array), expectedArray);
   })
   it("all client routes with regex ", async () => {
-
     const XMLContent = '<url><loc>https://programerski-klub.si//</loc></url> <url> <loc>https://programerski-klub.si//clani/danijelkorbar</loc></url>'
     const expectedRegexCatch = ['https://programerski-klub.si//', 'https://programerski-klub.si//clani/danijelkorbar'];
-    console.log()
-    expect(findWithRegex(XMLContent, routesRegex)).to.eql(expectedRegexCatch);
+    assert.deepEqual(findWithRegex(XMLContent, routesRegex), expectedRegexCatch);
   })
 
-  it("all links in client routes with regex ", async () => {
+  it("all links in client routes with regex ", () => {
     const XMLContent1 = {
       data:
         '<link href="../_app/immutable/assets/Vizitka-1d278f3e.css" rel="stylesheet">' +
@@ -89,10 +87,10 @@ describe('UNIT tests', () => {
     const responses = [XMLContent1];
     const expectedRegexCatch = ['../_app/immutable/assets/Vizitka-1d278f3e.css', 'https://github.com/danilojezernik', ' / content# '];
     // BEFORE FIND WITH REGEX, CONVERT RESPONSES DATA ARRAY => STRING
-    expect(findWithRegex(fromArrayToString(responses), linksRegex)).to.eql(expectedRegexCatch);
+    assert.deepEqual(findWithRegex(fromArrayToString(responses), linksRegex), expectedRegexCatch);
 
   })
-  it("all images from client routes with regex ", async () => {
+  it("all images from client routes with regex ", () => {
     const XMLContent1 = {
       data:
         '<img rel="icon" src="/danijelKorbar.png" alt="">' +
@@ -118,11 +116,10 @@ describe('UNIT tests', () => {
       '/danijelkorbar.gif',
       '/ danijel korbar .jpg'];
     // BEFORE FIND WITH REGEX, CONVERT RESPONSES DATA ARRAY => STRING
-    expect(findWithRegex(fromArrayToString(responses), imagesRegex)).to.eql(expectedRegexCatch);
+    assert.deepEqual(findWithRegex(fromArrayToString(responses), imagesRegex), expectedRegexCatch);
   })
 
-  it("parsing of all links from client routes page", async () => {
-    const PORT = port
+  it("parsing of all links from client routes page", () => {
     const links = [
       '/games/racer#content',
       './_app/immutable/assets/_page-e5f94684de.css',
@@ -132,15 +129,25 @@ describe('UNIT tests', () => {
 
     ];
     const expectedArray = [
-      `http://localhost:${PORT}/games/racer#content`,
-      `http://localhost:${PORT}/_app/immutable/assets/_page-e5f94684de.css`,
-      `http://localhost:${PORT}/_app/immutable/assets/_page-e5f94684.css`,
-      `http://localhost:${PORT}/_app/immutable/assets/_page-090371f3.css`,
+      `${localHost}games/racer#content`,
+      `${localHost}_app/immutable/assets/_page-e5f94684de.css`,
+      `${localHost}_app/immutable/assets/_page-e5f94684.css`,
+      `${localHost}_app/immutable/assets/_page-090371f3.css`,
       'https://github.com/Programerski-klub-Ljubljana'
     ];
-    expect(parse(links)).to.eql(expectedArray);
+    parse(links)
+    assert.deepEqual(parse(links),expectedArray);
   })
-  it("for empty src and href strings", async () => {
+  it("parsing of all client routes", () => {
+    const routes = [
+      'https://programerski-klub.si//clani/danilojezernik',
+      'https://programerski-klub.si//clani/danijelkorbar'];
+    const exptectedArray = [
+      `${localHost}clani/danilojezernik`,
+      `${localHost}clani/danijelkorbar`];
+    assert.deepEqual(replaceWithLocalhost(routes), exptectedArray);
+  })
+  it("for empty src and href strings", () => {
 
     const XMLContent1 = {
       data:
@@ -164,9 +171,18 @@ describe('UNIT tests', () => {
         url: 'content3'
       }
     }
-    const responses = [XMLContent1, XMLContent2, XMLContent3]
-    const find = findEmptySRCandHREF(responses)
-    expect(find.length).equal(4);
+    // must NOT capture
+    const XMLContent4 = {
+      data: '<img src = "content#" rel="icon" alt=""/> ',
+      config: {
+
+
+        url: 'content4'
+      }
+    }
+    const responses = [XMLContent1, XMLContent2, XMLContent3, XMLContent4]
+    const find = findEmptySRCandHREF(responses, emptyStringsRegex)
+    assert.equal(find.length, 4);
   })
 
 })

@@ -1,47 +1,39 @@
-import requestImageSize from 'request-image-size';
 import axios from 'axios';
 import https from 'https';
-import size from 'http-image-size';
+import requestImageSize from 'request-image-size';
 
 let emptyStrings = [];
 let sitemapRoutes = [];
 let images = [];
 let links = [];
 
-// ALL REGEX-es
 export const imagesRegex = /\b(?:href|src)\s*=\s*"\s*([^"]*(?:\.png|\.jpg|\.bmp|\.jpeg|\.gif))\s*"/gm;
-export const emptySRCHREFregex = /\b(?:href|src)\s*=\s*"\s*([^"]*)\s*"/gm;
+export const emptyStringsRegex = /\b(?:href|src)\s*=\s*"\s*([^"]*)\s*"/gm;
 export const linksRegex = /href\s*=\s*"(.*?)"/gms;
 export const routesRegex = /<loc>(.*?)</gm;
 
-// IMPORT PORT FROM PLAYWRIGHT.CONFIG
 export const port = '5173';
-export const localHost = `http://localhost:${port}`;
+export const localHost = `http://localhost:${port}/`;
+console.log(`testing at ${localHost}`);
 
-// TODO: Ne potrebujes
 export function checkIfUnique(array) {
-  const uniqueArray = array.filter((c, index) => {
-    return array.indexOf(c) === index;
-  });
-
+  const uniqueArray = array.filter((c, index) => array.indexOf(c) === index);
   return uniqueArray;
 }
 
-// TODO: localhost: v config.
 export function parse(parseLinks) {
   const regex = /[../]+/;
   parseLinks.map((link, i) => {
-    // eslint-disable-next-line no-param-reassign
     link = link.replace(regex, '/');
     if (link.charAt(0) === '.') {
-      // eslint-disable-next-line no-param-reassign
       link = link.replace('.', '');
     }
     if (link.includes('tel')) {
       parseLinks.splice(i, 1);
     }
     if (link.charAt(0) === '/') {
-      parseLinks.splice(i, 1, `http://localhost:${port}${link}`);
+      link = link.slice(1);
+      parseLinks.splice(i, 1, localHost + link);
     }
     return null;
   });
@@ -52,18 +44,17 @@ export async function getAllLinkResponses(allLinks) {
   const config = {
     httpsAgent: new https.Agent({
       rejectUnauthorized: false,
-    }),
-    decompress: false,
+    }), decompress: false,
   };
   const linksAxiosGet = allLinks.map((link) => axios.head(link, config));
-  const promisesResolved = linksAxiosGet.map((promise) => promise.catch((error) => ({ error })));
-
+  const promisesResolved = linksAxiosGet.map((promise) => promise.catch((error) => ({error})));
   return axios.all(promisesResolved)
-    .then(axios.spread((...responses) => responses.map((response) => response)));
+    .then(axios.spread((...responses) => responses));
 }
 
 export async function getAllImageResponses(allImages) {
-  return size('http://localhost:5173/favicon.png', async (err, dimensions) => dimensions);
+  const RIS = allImages.map((link) => requestImageSize(link));
+  return RIS.map((promise) => promise.catch((error) => ({error})));
 }
 
 export function findWithRegex(responses, regex) {
@@ -95,10 +86,9 @@ export function fromArrayToString(responses) {
   return data;
 }
 
-// TODO: Config
 export async function getSitemapURLS() {
   let sitemap = [];
-  await axios.get(`${localHost}/sitemap.xml`)
+  await axios.get(`${localHost}sitemap.xml`)
     .then((response) => {
       sitemap = response.data;
     })
@@ -108,32 +98,31 @@ export async function getSitemapURLS() {
   return sitemap;
 }
 
-// TODO: One time usage warning
 export function replaceWithLocalhost(routes) {
   const replacedArray = [];
   routes.map((route) => {
-    const replace = route.replace('https://programerski-klub.si//', `http://localhost:${port}/`);
+    const replace = route.replace('https://programerski-klub.si//', localHost);
     replacedArray.push(replace);
     return null;
   });
   return replacedArray;
 }
 
-// --------------------------------------------------------------------
-// TODO: Standardna oblika argsa, returna
-export function findEmptySRCandHREF(responses) {
+// TODO: LEAVING ARGS IN THIS RESPONSE STRUCTURE
+// TODO: BECAUSE OF GATHERING URL INFO FROM EVERY HREF AND SRC
+export function findEmptySRCandHREF(responses, regex) {
   // FIND ALL EMPTY SRC AND HREF STRINGS
   const URL = [];
   responses.map((response) => {
     // SEARCH WITH REGEX
     let result;
-    result = emptySRCHREFregex.exec(response.data);
+    result = regex.exec(response.data);
     while (result) {
       const trim = result[1].trim();
       if (trim.length === 0) {
         URL.push(response.config.url);
       }
-      result = emptySRCHREFregex.exec(response.data);
+      result = regex.exec(response.data);
     }
     return null;
   });
@@ -145,22 +134,16 @@ export async function returnArrays() {
   // GET ALL SITEMAP URLs
 
   sitemapRoutes = replaceWithLocalhost(findWithRegex(await getSitemapURLS(), routesRegex));
-  // TODO: Links for non image
   await axios.all(sitemapRoutes.map((routes) => axios.get(routes)))
     .then(axios.spread((...responses) => {
-      // TODO: For loop and write logic for one reqest only.
-      // TODO: One requetst you get status and data
-      // TODO: Call easy functions that get only basic types.
-      // TODO: Base on the return value you eather console log error or pass.
       // FIND ALL IMAGES WITH REGEX
       images = parse(findWithRegex(fromArrayToString(responses), imagesRegex));
       // FIND ALL THE LINKS WITH REGEX
       links = parse(findWithRegex(fromArrayToString(responses), linksRegex));
-      // links = findAllLinks(responses);
       // FIND ALL EMPTY SRC AND HREF STRINGS WITH REGEX
-      emptyStrings = findEmptySRCandHREF(responses);
+      emptyStrings = findEmptySRCandHREF(responses, emptyStringsRegex);
     }));
-  return { links, images, emptyStrings };
+  return {links, images, emptyStrings};
 }
 
 export function checkForURLlength(responses) {
@@ -170,7 +153,5 @@ export function checkForURLlength(responses) {
       console.log(`found empty tag in: ${response}`);
       return null;
     });
-  } else {
-    console.log('No empty href or src tags found!');
   }
 }
