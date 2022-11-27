@@ -12,14 +12,13 @@ export const emptyStringsRegex = /\b(?:href|src)\s*=\s*"\s*([^"]*)\s*"/gm;
 export const linksRegex = /href\s*=\s*"(.*?)"/gms;
 export const routesRegex = /<loc>(.*?)</gm;
 
-export const port = '5173';
 export const url = 'https://programerski-klub.si//';
+export const port = '5173';
 export const localHost = `http://localhost:${port}/`;
 console.log(`testing at ${localHost}`);
 
 export function checkIfUnique(array) {
-  const uniqueArray = array.filter((c, index) => array.indexOf(c) === index);
-  return uniqueArray;
+  return array.filter((c, index) => array.indexOf(c) === index);
 }
 
 export function parse(parseLinks) {
@@ -29,7 +28,7 @@ export function parse(parseLinks) {
     if (link.charAt(0) === '.') {
       link = link.replace('.', '');
     }
-    if (link.includes('tel')) {
+    if (link.includes('tel:')) {
       parseLinks.splice(i, 1);
     }
     if (link.charAt(0) === '/') {
@@ -60,7 +59,6 @@ export async function getAllImageResponses(allImages) {
 
 export function findWithRegex(responses, regex) {
   const array = [];
-  // SEARCH WITH REGEX
   let result;
   result = regex.exec(responses);
   while (result) {
@@ -78,13 +76,12 @@ export function findWithRegex(responses, regex) {
 }
 
 export function fromArrayToString(responses) {
-  // GET ALL DATA FROM RESPONSES SAVE IN ARRAY AND CONVERT TO STRING
   const data = [];
   responses.map((response) => {
     data.push(response.data);
     return null;
   });
-  return data;
+  return data.toString();
 }
 
 export async function getSitemapURLS() {
@@ -109,8 +106,8 @@ export function replaceWithLocalhost(routes) {
   return replacedArray;
 }
 
-// TODO: LEAVING ARGS IN THIS RESPONSE STRUCTURE
-// TODO: BECAUSE OF GATHERING URL INFO FROM EVERY HREF AND SRC
+//  LEAVING ARGS IN THIS RESPONSE STRUCTURE
+//  BECAUSE OF GATHERING URL INFO FROM EVERY HREF AND SRC
 export function findEmptySRCandHREF(responses, regex) {
   // FIND ALL EMPTY SRC AND HREF STRINGS
   const URL = [];
@@ -136,11 +133,8 @@ export async function returnArrays() {
   sitemapRoutes = replaceWithLocalhost(findWithRegex(await getSitemapURLS(), routesRegex));
   await axios.all(sitemapRoutes.map((routes) => axios.get(routes)))
     .then(axios.spread((...responses) => {
-      // FIND ALL IMAGES WITH REGEX
       images = parse(findWithRegex(fromArrayToString(responses), imagesRegex));
-      // FIND ALL THE LINKS WITH REGEX
       links = parse(findWithRegex(fromArrayToString(responses), linksRegex));
-      // FIND ALL EMPTY SRC AND HREF STRINGS WITH REGEX
       emptyStrings = findEmptySRCandHREF(responses, emptyStringsRegex);
     }));
   return {links, images, emptyStrings};
