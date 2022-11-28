@@ -17,7 +17,7 @@
         <h3 id="podpodnaslov">Hodimo na tekme, ustvarjamo igrice, sodelujemo v skupnih
             projektih,
 
-            <a class="green paper-btn" href="/static#content" id="nazaj">Nazaj</a>
+            <a class="green paper-btn" href="/#content" id="nazaj">Nazaj</a>
             predvsem se pa zelo zabavamo. :)</h3>
     </div>
 </div>

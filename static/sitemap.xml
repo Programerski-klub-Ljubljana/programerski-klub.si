@@ -2,23 +2,7 @@
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
-            <loc>https://programerski-klub.si//admin</loc>
-        </url>
-        
-        <url>
-            <loc>https://programerski-klub.si//admin/login</loc>
-        </url>
-        
-        <url>
             <loc>https://programerski-klub.si//</loc>
-        </url>
-        
-        <url>
-            <loc>https://programerski-klub.si//igre</loc>
-        </url>
-        
-        <url>
-            <loc>https://programerski-klub.si//igre/racer</loc>
         </url>
         
         <url>
@@ -38,19 +22,23 @@
         </url>
         
         <url>
-            <loc>https://programerski-klub.si//vpis/trener</loc>
+            <loc>https://programerski-klub.si//github</loc>
         </url>
         
         <url>
-            <loc>https://programerski-klub.si//vpis/clan</loc>
+            <loc>https://programerski-klub.si//igre</loc>
         </url>
         
         <url>
-            <loc>https://programerski-klub.si//oddelki/srednjesolski</loc>
+            <loc>https://programerski-klub.si//igre/racer</loc>
         </url>
         
         <url>
-            <loc>https://programerski-klub.si//oddelki/upravni</loc>
+            <loc>https://programerski-klub.si//izpis</loc>
+        </url>
+        
+        <url>
+            <loc>https://programerski-klub.si//kontakt</loc>
         </url>
         
         <url>
@@ -62,7 +50,15 @@
         </url>
         
         <url>
+            <loc>https://programerski-klub.si//oddelki/srednjesolski</loc>
+        </url>
+        
+        <url>
             <loc>https://programerski-klub.si//oddelki/trenerski</loc>
+        </url>
+        
+        <url>
+            <loc>https://programerski-klub.si//oddelki/upravni</loc>
         </url>
         
         <url>
@@ -70,15 +66,19 @@
         </url>
         
         <url>
-            <loc>https://programerski-klub.si//github</loc>
+            <loc>https://programerski-klub.si//vpis/clan</loc>
         </url>
         
         <url>
-            <loc>https://programerski-klub.si//kontakt</loc>
+            <loc>https://programerski-klub.si//vpis/trener</loc>
         </url>
         
         <url>
-            <loc>https://programerski-klub.si//izpis</loc>
+            <loc>https://programerski-klub.si//admin</loc>
+        </url>
+        
+        <url>
+            <loc>https://programerski-klub.si//admin/login</loc>
         </url>
         
     </urlset>
