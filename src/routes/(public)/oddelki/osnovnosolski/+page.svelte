@@ -10,7 +10,7 @@
     <p>
         <b class="text-success">Za klub je to najpomembnejši oddelek. in zato treninge izvaja naš predsednik kluba in trenerji,
             katere preveri in trenira naš predsednik kluba dolgo časa preden lahko vodijo osnovnošolski oddelek.
-            Tukaj si lahko <a href="/src/routes/vpisroutes/vpis/trener#content">preberete več kaj mora član kluba vse narediti</a> preden lahko postane trener.</b>
+            Tukaj si lahko <a href="/vpis/trener#content">preberete več kaj mora član kluba vse narediti</a> preden lahko postane trener.</b>
     </p>
     <p>
         Na mladih svet stoji in enako velja za naš klub! Klub namenja največ financiranja ravno temu oddelku, in poskrbimo
@@ -39,7 +39,7 @@
         preko miške in sestavljajo program kot sestavljanko. Na treningu ustvarjamo večinoma igrice ki jih učenci oblikujejo in sprogramiranje
         tako kot oni želijo. Igrice so večinoma retro igrice
         <a href="https://en.wikipedia.org/wiki/Pong" target="_blank" rel="noreferrer">Pong</a>,
-        <a href="https://en.wikipedia.org/wiki/Pinball" target="_blank" rel="noreferrer">Pinball</a>,
+        <a href="https://en.wikipedia.org/wiki/PinballS" target="_blank" rel="noreferrer">Pinball</a>,
         <a href="https://en.wikipedia.org/wiki/Space_Invaders" target="_blank" rel="noreferrer">Space invaders</a>,
         <a href="https://en.wikipedia.org/wiki/Pac-Man" target="_blank" rel="noreferrer">Pac Man</a>, itd...
     </p>

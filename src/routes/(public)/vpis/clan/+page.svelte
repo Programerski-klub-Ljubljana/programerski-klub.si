@@ -91,7 +91,7 @@
             <fieldset class="form-group">
                 <label class="paper-check">
                     <input required type="checkbox"> <span>Upošteval bom pravila v <a target="_blank"
-                                                                                      href="/src/routes/dokumentis/dokumenti#content">temeljnem aktu kluba</a>.</span>
+                                                                                      href="/dokumenti#content">temeljnem aktu kluba</a>.</span>
                 </label>
             </fieldset>
 

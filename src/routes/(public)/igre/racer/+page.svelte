@@ -6,7 +6,7 @@
 </script>
 
 <div class="row margin-top" id="gumbi">
-    <a class="paper-btn yellow margin-right-small" href="/src/routes/igreroutes/igre#content">Igre</a>
+    <a class="paper-btn yellow margin-right-small" href="/igre#content">Igre</a>
     <label class="paper-btn orange" for="modal-1">Navodila</label>
 </div>
 <input class="modal-state" id="modal-1" type="checkbox">
