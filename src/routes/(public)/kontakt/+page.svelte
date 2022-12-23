@@ -7,7 +7,7 @@
     V primeru dela lahko pričakujete odgovor najkasneje do večera istega dne na katerega ste poslali sporočilo...
 </p>
 
-<form method="POST">
+<form method="POST" action="https://formspree.io/f/mayklaew">
     <div class="row flex-spaces">
         <div class="col-fill col-sm-4 margin-right-small">
             <input class="input-block" name="ime" placeholder="Ime..." required type="text">

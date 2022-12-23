@@ -28,7 +28,7 @@
     izobraževanju članov in širše javnosti.</b></p>
 
 
-<form method="POST">
+<form method="POST" action="https://formspree.io/f/mwkzwava">
     <div class="row">
         <div class="col-fill margin-right-small">
             <input class="input-block" name="ime" placeholder="Tvoje ime..." required type="text">
